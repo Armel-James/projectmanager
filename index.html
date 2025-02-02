@@ -109,5 +109,76 @@ document.getElementById('login_button').addEventListener('click', function() {
 });
 </script>
 
+<!--=====================TEST=====================-->
+	  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Google Sign-In Button -->
+  <button id="google-sign-in" class="btn btn-primary">Sign in with Google</button>
+  
+  <!-- Popup Container -->
+  <div id="popup-container" style="display: none;">
+    <h2>Sign in with Google</h2>
+    <button id="close-popup" class="btn btn-secondary">Close</button>
+    <button id="google-sign-in-popup" class="btn btn-primary">Sign in with Google</button>
+  </div>
+  
+  <!-- Script to handle Google Sign-In -->
+  <script>
+    // Client ID from Google Cloud Console
+    var clientId = '452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com';
+
+    // API Key from Google Cloud Console
+    var apiKey = 'AIzaSyCVPHj9B4fSyCA83-TYIf-6a5m4YrWTO7A';
+
+    // Scopes for Google Sign-In
+    var scopes = ['profile', 'email'];
+
+    // Initialize Google Sign-In button
+    var googleSignInButton = document.getElementById('google-sign-in');
+    googleSignInButton.addEventListener('click', function () {
+      // Open popup window
+      var popup = window.open('', '_blank', 'width=400,height=300');
+      popup.googleSignInPopup = function () {
+        // Initialize Google Sign-In API
+        gapi.load('client:auth2', function () {
+          gapi.client.init({
+            apiKey: apiKey,
+            clientId: clientId,
+            scope: scopes.join(' ')
+          });
+          // Sign in with Google
+          gapi.auth2.getAuthInstance().signIn().then(function (response) {
+            // Get user's profile information
+            var profile = response.getBasicProfile();
+            console.log('Signed in as: ' + profile.getName());
+            // Close popup window
+            popup.close();
+          });
+        });
+      };
+      popup.googleSignInPopup();
+    });
+
+    // Initialize popup container
+    var popupContainer = document.getElementById('popup-container');
+    var closeButton = document.getElementById('close-popup');
+    closeButton.addEventListener('click', function () {
+      popupContainer.style.display = 'none';
+    });
+
+    // Initialize Google Sign-In popup button
+    var googleSignInPopupButton = document.getElementById('google-sign-in-popup');
+    googleSignInPopupButton.addEventListener('click', function () {
+      // Sign in with Google
+      gapi.auth2.getAuthInstance().signIn().then(function (response) {
+        // Get user's profile information
+        var profile = response.getBasicProfile();
+        console.log('Signed in as: ' + profile.getName());
+        // Close popup container
+        popupContainer.style.display = 'none';
+      });
+    });
+  </script>
+	<!--=====================TEST=====================-->
 </body>
 </html>
