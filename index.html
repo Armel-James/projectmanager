@@ -12,29 +12,32 @@ Released   : 20140309
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Prototype</title>
-<meta name="keywords" content="Project management" />
-<meta name="description" content="" />
-<meta name="viewport" content="" />
-<link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
-<link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Prototype</title>
+  <meta name="keywords" content="Project management" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="" />
+  <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+  <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-
 </head>
+
 <body>
 <div id="wrapper">
 	<div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#">WebApp Name</a></h1>
+			<h1><a href="#">
+        <img src="res/images/logo.png" alt="logo.png" height="60px"/>
+        <h4>project legends</h4>
+      </a></h1>
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="#" accesskey="5" title="">Homepage</a></li>
-				<li><a href="#" accesskey="2" title="">Our Clients</a></li>
+				<li><a href="#" accesskey="5" title="">Home</a></li>
+				<li><a href="#" accesskey="2" title="">Features</a></li>
 				<li><a href="#" accesskey="3" title="">About Us</a></li>
 				<li><a href="#" accesskey="4" title="">Contact Us</a></li>
 				<li class="current_page_item"><a id="login_button" accesskey="1" title="" onclick="openForm()">Log In</a></li>
@@ -54,22 +57,26 @@ Released   : 20140309
 	</div>
 	<div id="extra" class="container">
 		<div class="title">
-			<h2>Description</h2>
-			<span class="byline">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue</span> </div>
+			<h2>What's inside?</h2>
+			<span class="byline">An endless streamline of productivity</span>
+    </div>
 		<div id="three-column">
 			<div class="boxA">
-				<div class="box"> <span class="fa fa-cloud-download"></span>
-					<p>Feature1</p>
+				<div class="box"> 
+          <img class="img-featured" src="res/images/feature-collaborative-environment.png" alt="collaborative.png"/>
+					<p>Collaborative Environment</p>
 				</div>
 			</div>
 			<div class="boxB">
-				<div class="box"> <span class="fa fa-cogs"></span>
-					<p>Feature 2</p>
+				<div class="box">
+          <img class="img-featured" src="res/images/feature-monitoring.png" alt="collaborative.png"/>
+					<p>KPI Monitoring</p>
 				</div>
 			</div>
 			<div class="boxC">
-				<div class="box"> <span class="fa fa-user"></span>
-					<p>Feature 3</p>
+				<div class="box">
+          <img class="img-featured" src="res/images/feature-tools-integration.png" alt="collaborative.png"/>
+					<p>Integrative Project Management Tools</p>
 				</div>
 			</div>
 		</div>
@@ -129,74 +136,7 @@ document.getElementById('login_button').addEventListener('click', function() {
     </form>
   </div>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    .open-button {
-      background-color: #555;
-      color: white;
-      padding: 16px 20px;
-      border: none;
-      cursor: pointer;
-      opacity: 0.8;
-      position: relative;
-      /*bottom: 23px;
-  right: 28px;
-  width: 280px;*/
-    }
-
-    .form-popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      justify-content: center;
-      align-items: center;
-      z-index: 9;
-    }
-
-    .form-container {
-      max-width: 300px;
-      padding: 10px;
-      background-color: white;
-    }
-
-    .form-container input[type=text],
-    .form-container input[type=password] {
-      width: 90%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      border: none;
-      background: #f1f1f1;
-    }
-
-    .form-container input[type=text]:focus,
-    .form-container input[type=password]:focus {
-      background-color: #ddd;
-      outline: none;
-    }
-
-    .form-container .btn {
-      background-color: #04AA6D;
-      color: white;
-      padding: 16px 20px;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      margin-bottom: 10px;
-      opacity: 0.8;
-    }
-
-    .form-container .cancel {
-      background-color: red;
-    }
-
-    .form-container .btn:hover,
-    .open-button:hover {
-      opacity: 1;
-    }
+    
   </style>
   <script>
     function openForm() {
