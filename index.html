@@ -110,75 +110,146 @@ document.getElementById('login_button').addEventListener('click', function() {
 </script>
 
 <!--=====================TEST=====================-->
+
+	<!--Form-->
+	<!-- The form -->
+  <div class="form-popup" id="myForm">
+    <form action="/action_page.php" class="form-container">
+      <h1>Login</h1>
+      <!--
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>-->
+
+      <!--<button type="submit" class="btn">Login</button>-->
+      <div type="submit" class="btn" onclick="signIn()">Login with Google</div>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Button used to open the contact form - fixed at the bottom of the page */
+    .open-button {
+      background-color: #555;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      position: relative;
+      /*bottom: 23px;
+  right: 28px;
+  width: 280px;*/
+    }
+
+    /* The popup form - hidden by default */
+    .form-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+      max-width: 300px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    /* Full-width input fields */
+    .form-container input[type=text],
+    .form-container input[type=password] {
+      width: 90%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* When the inputs get focus, do something */
+    .form-container input[type=text]:focus,
+    .form-container input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for the submit/login button */
+    .form-container .btn {
+      background-color: #04AA6D;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+      background-color: red;
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover,
+    .open-button:hover {
+      opacity: 1;
+    }
+  </style>
+  <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "flex";
+      //document.body.style.overflow = 'hidden';
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+  </script>
+	<!--End Form-->
+	
 	  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-  <!-- Google Sign-In Button -->
-  <button id="google-sign-in" class="btn btn-primary">Sign in with Google</button>
-  
-  <!-- Popup Container -->
-  <div id="popup-container" style="display: none;">
-    <h2>Sign in with Google</h2>
-    <button id="close-popup" class="btn btn-secondary">Close</button>
-    <button id="google-sign-in-popup" class="btn btn-primary">Sign in with Google</button>
-  </div>
-  
-  <!-- Script to handle Google Sign-In -->
   <script>
-    // Client ID from Google Cloud Console
-    var clientId = '452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com';
+  function signIn() {
+    let oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
+    let form = document.createElement('form')
+    form.setAttribute('method', 'GET')
+    form.setAttribute('action', oauth2Endpoint)
 
-    // API Key from Google Cloud Console
-    var apiKey = 'AIzaSyCVPHj9B4fSyCA83-TYIf-6a5m4YrWTO7A';
+    let params = {
+      "client_id": "452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com",
+      "redirect_uri":"http://armel-james/projectmanager.github.io",
+      "response_type":"token",
+      "scope":"https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+      "include_granted_scopes":true,
+      'state':'pass-through-value'
+    }
 
-    // Scopes for Google Sign-In
-    var scopes = ['profile', 'email'];
+    for(var p in params) {
+      let input = document.createElement('input')
+      input.setAttribute('type', 'hidden')
+      input.setAttribute('name', p)
+      input.setAttribute('value', params[p])
+      form.appendChild(input)
+    }
 
-    // Initialize Google Sign-In button
-    var googleSignInButton = document.getElementById('google-sign-in');
-    googleSignInButton.addEventListener('click', function () {
-      // Open popup window
-      var popup = window.open('', '_blank', 'width=400,height=300');
-      popup.googleSignInPopup = function () {
-        // Initialize Google Sign-In API
-        gapi.load('client:auth2', function () {
-          gapi.client.init({
-            apiKey: apiKey,
-            clientId: clientId,
-            scope: scopes.join(' ')
-          });
-          // Sign in with Google
-          gapi.auth2.getAuthInstance().signIn().then(function (response) {
-            // Get user's profile information
-            var profile = response.getBasicProfile();
-            console.log('Signed in as: ' + profile.getName());
-            // Close popup window
-            popup.close();
-          });
-        });
-      };
-      popup.googleSignInPopup();
-    });
+    document.body.appendChild(form)
 
-    // Initialize popup container
-    var popupContainer = document.getElementById('popup-container');
-    var closeButton = document.getElementById('close-popup');
-    closeButton.addEventListener('click', function () {
-      popupContainer.style.display = 'none';
-    });
-
-    // Initialize Google Sign-In popup button
-    var googleSignInPopupButton = document.getElementById('google-sign-in-popup');
-    googleSignInPopupButton.addEventListener('click', function () {
-      // Sign in with Google
-      gapi.auth2.getAuthInstance().signIn().then(function (response) {
-        // Get user's profile information
-        var profile = response.getBasicProfile();
-        console.log('Signed in as: ' + profile.getName());
-        // Close popup container
-        popupContainer.style.display = 'none';
-      });
-    });
-  </script>
+    form.submit()
+  }
+</script>
 	<!--=====================TEST=====================-->
 </body>
 </html>
