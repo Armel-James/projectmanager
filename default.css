@@ -267,16 +267,17 @@
 	}
 
 	.boxA,
-	.boxB
+	.boxB,
+	.boxC
 	{
 		float: left;
 		margin-right: 20px;
 	}
 	
-	.boxC
+	/*.boxC
 	{
 		float: right;
-	}
+	}*/
 
 /*********************************************************************************/
 /* 2-column                                                                      */
