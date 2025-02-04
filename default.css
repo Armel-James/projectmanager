@@ -109,11 +109,6 @@
 		width: auto;
 	}
 
-	.img-featured {
-		max-height: 140px;
-		height: 7vw;
-	}
-
 /*********************************************************************************/
 /* List Styles                                                                   */
 /*********************************************************************************/
@@ -191,14 +186,14 @@
 	{
 		display: inline-block;
 		padding: 0em 3em;
-		background: #000000;
+		background: #009E2D;
 		letter-spacing: 0.20em;
 		line-height: 4em;
 		text-decoration: none;
 		text-transform: uppercase;
 		font-weight: 400;
 		font-size: 1em;
-		color: #0c0404;
+		color: #FFF;
 	}
 	
 	.button:before
@@ -249,7 +244,8 @@
 	
 	.box1,
 	.box2,
-	.box3 {
+	.box3,
+	{
 		float: left;
 		margin-right: 20px;
 	}
@@ -262,29 +258,20 @@
 /*********************************************************************************/
 /* 3-column                                                                      */
 /*********************************************************************************/
-	#three-column {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-	}
 
 	.boxA,
 	.boxB,
 	.boxC
 	{
 		width: 320px;
-		float: left;
-		margin-right: 20px;
 	}
 
-	.box {
-		display: grid;
-		grid-template-rows: auto 70px;
-	}
-	
-	.box > * {
-		margin: auto;
+	.boxA,
+	.boxB,
+	.boxC
+	{
+		float: left;
+		margin-right: 20px;
 	}
 	
 	/*.boxC
@@ -323,19 +310,13 @@
 
 	#header-wrapper
 	{
-		background: #e4e4e4;
+		background: #333333;
 	}
 
 	#header
 	{
-		position: fixed;
-		width: 100%;
-		padding: 2em 10vw 1em 10vw;
-		background-color: #f0f0f0;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
+		position: relative;
+		padding: 3em 0em;
 	}
 
 /*********************************************************************************/
@@ -344,20 +325,21 @@
 
 	#logo
 	{
+		position: absolute;
 		top: 1em;
 		left: 0;
 	}
 	
 	#logo h1
 	{
-		color: #0e0e0e;
+		color: #FFF;
 	}
 	
 	#logo a
 	{
 		text-decoration: none;
 		text-transform: uppercase;
-		color: #000000;
+		color: #FFF;
 	}
 
 /*********************************************************************************/
@@ -366,6 +348,7 @@
 
 	#menu
 	{
+		position: absolute;
 		top: 2em;
 		right: 0;
 	}
@@ -389,21 +372,18 @@
 		text-decoration: none;
 		text-transform: uppercase;
 		font-size: 0.8em;
-		color: #858585;
-		transition: 300ms;
+		color: #FFF;
 	}
 	
 	#menu li:hover a, #menu li.active a, #menu li.active span
 	{
-		color: #000000;
-		cursor: pointer;
+		color: #FFF;
 	}
 	
 	#menu .current_page_item a
 	{
-		background: #3787e2;
-		color: #f3f2f2;
-		border-radius: 5px;
+		background: #009E2D;
+		color: #FFF;
 	}
 	
 	#menu .icon
@@ -417,13 +397,11 @@
 	#banner
 	{
 		overflow: hidden;
-		padding: 200px 0em 10em 0em;
+		padding: 7em 0em 5em 0em;
 		background: #202020;
 		background-size: cover;
 		text-align: center;
 		color: rgba(255,255,255,.8);
-		width: 80%;
-		margin: auto;
 	}
 
 	#banner .title
@@ -445,7 +423,7 @@
 	#banner .button
 	{
 		margin-top: 3em;
-		background: #000000 !important;
+		background: #009E2D !important;
 	}
 
 /*********************************************************************************/
@@ -533,7 +511,7 @@
 	
 	#featured .button
 	{
-		background: #000000;
+		background: #FFF;
 		margin-top: 3em;
 		font-size: 1em;
 		color: #009E2D;
@@ -560,110 +538,35 @@
 .box
 {
 	padding: 3em 2em 2em 2em;
-	border: 1px solid rgb(190, 190, 190, 0.5);
+	border: 1px solid rgba(0,0,0,0.1);
 	border-radius: 8px;
-	text-align: center;
-	transition: 400ms ease-in;
-}
-
-.box:hover {
-	box-shadow:0px 0px 10px#4c7de6;
+		text-align: center;
 }
 
 
-#extra
-{
-	overflow: hidden;
-	padding: 5em 0em;
-}
+	#extra
+	{
+		overflow: hidden;
+		padding: 5em 0em;
+	}
+	
+	#extra .title
+	{
+		text-align: center;
+	}
+	
+	#extra .button
+	{
+		margin-top: 5em;
+	}
+	
+	#extra .fa
+	{
+		display: block;
+		margin-bottom: 0.5em;
+		text-align: center;
+		font-size: 3em;
+	}
 
-#extra .title
-{
-	text-align: center;
-}
 
-#extra .button
-{
-	margin-top: 5em;
-}
 
-#extra .fa
-{
-	display: block;
-	margin-bottom: 0.5em;
-	text-align: center;
-	font-size: 3em;
-}
-
-/*********************************************************************************/
-/* Form                                                                 */
-/*********************************************************************************/
-
-* {
-	box-sizing: border-box;
-  }
-  .open-button {
-	background-color: #555;
-	color: white;
-	padding: 16px 20px;
-	border: none;
-	cursor: pointer;
-	opacity: 0.8;
-	position: relative;
-	/*bottom: 23px;
-right: 28px;
-width: 280px;*/
-  }
-
-  .form-popup {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	justify-content: center;
-	align-items: center;
-	z-index: 9;
-  }
-
-  .form-container {
-	max-width: 300px;
-	padding: 10px;
-	background-color: white;
-  }
-
-  .form-container input[type=text],
-  .form-container input[type=password] {
-	width: 90%;
-	padding: 15px;
-	margin: 5px 0 22px 0;
-	border: none;
-	background: #f1f1f1;
-  }
-
-  .form-container input[type=text]:focus,
-  .form-container input[type=password]:focus {
-	background-color: #ddd;
-	outline: none;
-  }
-
-  .form-container .btn {
-	background-color: #04AA6D;
-	color: white;
-	padding: 16px 20px;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	margin-bottom: 10px;
-	opacity: 0.8;
-  }
-
-  .form-container .cancel {
-	background-color: red;
-  }
-
-  .form-container .btn:hover,
-  .open-button:hover {
-	opacity: 1;
-  }
