@@ -31,8 +31,8 @@ Released   : 20140309
 		<div id="logo">
 			<div>
 				<a href="#">
-					<img src="res/images/logo.png" alt="logo.png" height="60px"/>
-					<h2>project legend</h2>
+					<img src="res/images/logo.png" alt="logo.png" height="40px"/>
+					<h2>project legends</h2>
       			</a>
 			</div>
 		</div>
@@ -71,7 +71,7 @@ Released   : 20140309
 			</div>
 			<div class="boxB">
 				<div class="box">
-          <img class="img-featured" src="res/images/feature-monitoring.png" alt="collaborative.png"/>
+          			<img class="img-featured" src="res/images/feature-monitoring.png" alt="collaborative.png"/>
 					<p>KPI Monitoring</p>
 				</div>
 			</div>
@@ -124,17 +124,20 @@ document.getElementById('login_button').addEventListener('click', function() {
 	<!-- The form -->
   <div class="form-popup" id="myForm">
     <form action="/action_page.php" class="form-container">
-      <h1>Login</h1>
-      <!--
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>-->
-
-      <!--<button type="submit" class="btn">Login</button>-->
-      <div type="submit" class="btn" onclick="signIn()">Login with Google</div>
-      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      <div>
+		<div type="button" class="btn-close" onclick="closeForm()">
+			<img src="res/images/close.png"/>
+		</div>
+		<div class="logo">
+			<img src="/res/images/logo.png" height="70"/>
+		</div>
+		<div type="submit" class="btn-signin-google" onclick="signIn()">
+			<img src="/res/images/google-icon.png" height="30"/>
+			<h5>Sign in with Google</h5>
+		</div>
+      	
+	  </div>
+      
     </form>
   </div>
   <style>
