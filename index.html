@@ -1,191 +1,252 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
+<!DOCTYPE html>
 
-Name       : PlainDisplay 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20140309
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Project Legends</title>
+		<meta name="keywords" content="Project management" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+		<link href="styles.css" rel="stylesheet"/>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	</head>
 
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Prototype</title>
-  <meta name="keywords" content="Project management" />
-  <meta name="description" content="" />
-  <meta name="viewport" content="" />
-  <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
-  <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-  <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="#">Project Legends</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#features">Features</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#about">About Us</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#contact">Contact Us</a>
+						</li>
+					</ul>
+					<button class="btn btn-outline-primary" type="submit" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+				</div>
+			</div>
+		</nav>
 
-<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-</head>
-
-<body>
-<div id="wrapper">
-	<div id="header-wrapper">
-	<div id="header" class="container">
-		<div id="logo">
-			<div>
-				<a href="#">
-					<img src="res/images/logo.png" alt="logo.png" height="40px"/>
-					<h2>project legends</h2>
-      			</a>
+		<!-- Hero -->
+		<div class="px-4 pt-5 my-5 text-center border-bottom" id="hero">
+			<h1 class="display-4 fw-bold">Simplify. Organize. Succeed.</h1>
+			<div class="col-lg-6 mx-auto">
+			  <p class="lead mb-4">Our powerful project management system helps you plan, collaborate, and execute tasks seamlessly. Stay organized, crush deadlines, and drive success—whether you're a team of one or a hundred.</p>
+			  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+				<button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" onclick="signIn()">
+					<img src="https://freesvg.org/img/1534129544.png" style="background-color: white; border-radius: 10px; padding: 3px;" alt="google"/>
+					Sign in with Google</button>
+				<button type="button" class="btn btn-outline-secondary btn-lg px-4">Contact Us</button>
+			  </div>
+			</div>
+			<div class="overflow-hidden" style="max-height: 30vh;">
+			  <div class="container px-5">
+				<img src="res/images/hero-image.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+			  </div>
 			</div>
 		</div>
-		<div id="menu">
-			<ul>
-				<li><a href="#" accesskey="5" title="">Home</a></li>
-				<li><a href="#" accesskey="2" title="">Features</a></li>
-				<li><a href="#" accesskey="3" title="">About Us</a></li>
-				<li><a href="#" accesskey="4" title="">Contact Us</a></li>
-				<li class="current_page_item"><a id="login_button" accesskey="1" title="" onclick="openForm()">Log In</a></li>
-			</ul>
+
+		<!-- Features -->
+		<section class="bsb-service-6 py-5 py-xl-8" id="features">
+			<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col-12 col-md-10 col-lg-8 col-xl-7">
+					<h3 class="fs-6 mb-2 text-secondary text-center text-uppercase">What We Do?</h3>
+					<h2 class="display-5 mb-4 mb-md-5 text-center">Providing you a simple yet perfect streamline of productivity</h2>
+					<hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
+				</div>
+			</div>
+			</div>
+		
+			<div class="container overflow-hidden">
+			<div class="row gy-4 gy-md-0 gx-xxl-5">
+				<div class="col-12 col-md-4">
+				<div class="card bg-transparent border-primary rounded h-100">
+					<div class="card-body">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-hdd text-primary mb-4" viewBox="0 0 16 16">
+							<path d="M4.5 11a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zM3 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+							<path d="M16 11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V9.51c0-.418.105-.83.305-1.197l2.472-4.531A1.5 1.5 0 0 1 4.094 3h7.812a1.5 1.5 0 0 1 1.317.782l2.472 4.53c.2.368.305.78.305 1.198V11zM3.655 4.26 1.592 8.043C1.724 8.014 1.86 8 2 8h12c.14 0 .276.014.408.042L12.345 4.26a.5.5 0 0 0-.439-.26H4.094a.5.5 0 0 0-.44.26zM1 10v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z" />
+						</svg>
+						<h3 class="h2 mb-4">Collaboration</h3>
+						<p class="mb-4 text-secondary">Streamline workflows with task assignments, real-time status updates, and role-based access control. Ensure seamless coordination and efficiency across teams.</p>
+						<!-- <a href="#!" class="fw-bold text-decoration-none link-primary">
+							Learn More
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+							</svg>
+						</a> -->
+					</div>
+				</div>
+				</div>
+				<div class="col-12 col-md-4">
+					<div class="card bg-transparent border-primary rounded h-100">
+						<div class="card-body">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-filetype-ai text-primary mb-4" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2H6v-1h6a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.113 14.82.8 15.85H0l1.342-3.999h.926l1.336 3.999h-.841l-.314-1.028H1.113Zm1.178-.588-.49-1.617h-.034l-.49 1.617h1.014Zm2.425-2.382v3.999h-.791V11.85h.79Z" />
+						</svg>
+						<h3 class="h2 mb-4">KPI Monitoring</h3>
+						<p class="mb-4 text-secondary">Monitor key metrics in real-time with our dashboards and reports. Gain insights, improve efficiency, and keep projects on track effortlessly.</p>
+						
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-4">
+				<div class="card bg-transparent border-primary rounded h-100">
+					<div class="card-body">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-diagram-3 text-primary mb-4" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+						</svg>
+						<h3 class="h2 mb-4">Multiple Views</h3>
+						<p class="mb-4 text-secondary">Optimize workflow with Kanban, List, and Gantt views, providing flexibility and clear project insights to enhance efficiency and organization.</p>
+						
+					</div>
+				</div>
+				</div>
+			</div>
+			</div>
+		</section>
+
+		
+		<!-- About -->
+		<section class="py-3 py-md-5" id="about">
+			<div class="container">
+			<div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+				<div class="col-12 col-lg-6 col-xl-5">
+					<img class="img-fluid rounded" loading="lazy" src="./res/images/sample.png" alt="About 1">
+				</div>
+				<div class="col-12 col-lg-6 col-xl-7">
+				<div class="row justify-content-xl-center">
+					<div class="col-12 col-xl-11">
+					<h2 class="mb-3">Who Are We?</h2>
+					<p class="lead fs-4 text-secondary mb-3">We are a team of innovators dedicated to transforming project management.</p>
+					<p class="mb-5">Our mission is to provide a powerful, intuitive, and scalable solution that helps teams plan, collaborate, and execute efficiently. With a focus on simplicity, analytics, and seamless workflows, we empower SMEs and freelancers to achieve their goals faster and smarter.</p>
+					<div class="row gy-4 gy-md-0 gx-xxl-5X">
+						<div class="col-12 col-md-6">
+						<div class="d-flex">
+							<div class="me-4 text-primary">
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+								<path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+							</svg>
+							</div>
+							<div>
+							<h2 class="h4 mb-3">Simplistic Advocate</h2>
+							<p class="text-secondary mb-0">We are crafting a very simple tool for small to medium projects.</p>
+							</div>
+						</div>
+						</div>
+						<div class="col-12 col-md-6">
+						<div class="d-flex">
+							<div class="me-4 text-primary">
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
+								<path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
+							</svg>
+							</div>
+							<div>
+							<h2 class="h4 mb-3">Students</h2>
+							<p class="text-secondary mb-0">As students, we pursue productivity and efficient workflow for better outputs.</p>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			</div>
+		</section>
+
+		<hr>
+
+		<!-- Contact -->
+		<div class="container my-5" id="contact">
+			<div class="row justify-content-center">
+			  	<div class="col-lg-9">
+					<h1 class="mb-3">Contact Us</h1>
+					<form>
+					<div class="row g-3">
+						<div class="col-md-6">
+							<label for="your-name" class="form-label">Full Name</label>
+							<input type="text" class="form-control" id="your-name" name="your-name" required>
+						</div>
+						<div class="col-md-6">
+							<label for="your-surname" class="form-label">Email</label>
+							<input type="text" class="form-control" id="your-surname" name="your-surname" required>
+						</div>
+						<div class="col-md-12">
+							<label for="your-subject" class="form-label">Subject</label>
+							<input type="text" class="form-control" id="your-subject" name="your-subject">
+						</div>
+						<div class="col-12">
+							<label for="your-message" class="form-label">Message</label>
+							<textarea class="form-control" id="your-message" name="your-message" rows="5" required></textarea>
+						</div>
+						<div class="col-12">
+							<div class="row">
+								<div class="col-md-12 d-flex justify-content-end">
+									<button type="submit" class="btn btn-primary ml-auto w-25" >Send</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					</form>
+			  </div>
+			</div>
 		</div>
-	</div>
-	</div>
-	<div id="banner">
+
+		<!-- Footer -->
 		<div class="container">
-			<div class="title">
-				<h2>Welcome Message</h2>
-				<span class="byline">Proin gravida porttitor accumsan</span> </div>
-			<ul class="actions">
-				<!--<li><a href="#" class="button">Etiam posuere</a></li>-->
-			</ul>
+			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+			  <div class="col-md-4 d-flex align-items-center">
+				<a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+				  <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+				</a>
+				<span class="mb-3 mb-md-0 text-body-secondary">© 2025 Project Legends, Inc</span>
+			  </div>
+		  
+			  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+				<li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+				<li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+				<li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+			  </ul>
+			</footer>
 		</div>
-	</div>
-	<div id="extra" class="container">
-		<div class="title">
-			<h2>What's inside?</h2>
-			<span class="byline">An endless streamline of productivity</span>
-    </div>
-		<div id="three-column">
-			<div class="boxA">
-				<div class="box"> 
-          <img class="img-featured" src="res/images/feature-collaborative-environment.png" alt="collaborative.png"/>
-					<p>Collaborative Environment</p>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header" style="border: none;">
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body pb-4">
+						<div class="d-flex flex-column justify-content-center align-items-center">
+							<h4>Log in on Project Legends</h4>
+							<hr>
+							<button class="content" onclick="signIn()">
+								<img src="https://freesvg.org/img/1534129544.png" alt="google"/>
+								Sign in with Google
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="boxB">
-				<div class="box">
-          			<img class="img-featured" src="res/images/feature-monitoring.png" alt="collaborative.png"/>
-					<p>KPI Monitoring</p>
-				</div>
-			</div>
-			<div class="boxC">
-				<div class="box">
-          <img class="img-featured" src="res/images/feature-tools-integration.png" alt="collaborative.png"/>
-					<p>Integrative Project Management Tools</p>
-				</div>
-			</div>
 		</div>
-		<ul class="actions">
-			<!--<li><a href="#" class="button">Etiam posuere</a></li>-->
-		</ul>
-	</div>
-	<div id="featured">
-		<div class="container">
-			<div class="title">
-				<h2>Footer</h2>
-				<span class="byline">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue</span> </div>
-			<p>This is <strong>PlainDisplay</strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you're pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :) </p>
-		</div>
-		<ul class="actions">
-			<!--<li><a href="#" class="button">Etiam posuere</a></li>-->
-		</ul>
-	</div>
-	<!--<div id="page" class="container">
-		<div class="title">
-			<h2>Nulla luctus eleifend</h2>
-			<span class="byline">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span> </div>
-		<p> Vivamus fermentum nibh in augue. Praesent a lacus at urna congue rutrum. Nulla enim eros nibh. Duis enim nulla, luctus eu, dapibus lacinia, venenatis id, quam. Vestibulum imperdiet, magna nec eleifend rutrum, nunc lectus vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor.</p>
-		<ul class="actions">
-			<li><a href="#" class="button">Etiam posuere</a></li>
-		</ul>
-	</div>-->
-</div>
-<div id="copyright" class="container">
-	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
-</div>
-
-<script>
-document.getElementById('login_button').addEventListener('click', function() {
-  console.log('Button clicked!');
-  // logic
-});
-</script>
-
-<!--=====================TEST=====================-->
-
-	<!--Form-->
-	<!-- The form -->
-  <div class="form-popup" id="myForm">
-    <form action="/action_page.php" class="form-container">
-      <div>
-		<div type="button" class="btn-close" onclick="closeForm()">
-			<img src="res/images/close.png"/>
-		</div>
-		<div class="logo">
-			<img src="/res/images/logo.png" height="70"/>
-		</div>
-		<div type="submit" class="btn-signin-google" onclick="signIn()">
-			<img src="/res/images/google-icon.png" height="30"/>
-			<h5>Sign in with Google</h5>
-		</div>
-      	
-	  </div>
-      
-    </form>
-  </div>
-  <style>
-    
-  </style>
-  <script>
-    function openForm() {
-      document.getElementById("myForm").style.display = "flex";
-      //document.body.style.overflow = 'hidden';
-    }
-
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
-  </script>
-	<!--End Form-->
-	
-	  <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-  <script>
-  function signIn() {
-    let oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
-    let form = document.createElement('form')
-    form.setAttribute('method', 'GET')
-    form.setAttribute('action', oauth2Endpoint)
-
-    let params = {
-      "client_id": "452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com",
-      "redirect_uri":"https://www.projectmanager.publicvm.com/workplace.html",
-      "response_type":"token",
-      "scope":"https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
-      "include_granted_scopes":true,
-      'state':'pass-through-value'
-    }
-
-    for(var p in params) {
-      let input = document.createElement('input')
-      input.setAttribute('type', 'hidden')
-      input.setAttribute('name', p)
-      input.setAttribute('value', params[p])
-      form.appendChild(input)
-    }
-
-    document.body.appendChild(form)
-
-    form.submit()
-  }
-</script>
-	<!--=====================TEST=====================-->
-</body>
+		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<script src="login.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	</body>
 </html>

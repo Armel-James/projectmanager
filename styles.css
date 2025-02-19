@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Google Sign In Button */
+.content{
+    display: flex;
+    padding: 12px 56px;
+    border: 1px solid gray;
+    border-radius: 50px;
+    transition: 0.5s;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    align-items: center;
+    color: #3d4055;
+    background: #fff;
+}
+
+img {
+  height: 20px;
+  margin: 0 6px 0 0;
+}
+
+.content:hover{
+    cursor: pointer;
+    background-color: honeydew;
+}
+
+/* Navbar */
+nav {
+   transition: 500ms ease;
+   background-color: white;
+}
+  
+nav.scrolled {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.jelmar {
+    height: 2000px;
+    background-color: #fafafa;
+}
