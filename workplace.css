@@ -1,0 +1,26 @@
+.dropdown-menu-right {
+    right: 0 !important;
+    left: auto !important;
+ }
+
+ .profile-dropdown {
+    border: 1px solid transparent;
+    border-radius: 25px;
+ }
+
+ .profile-dropdown:hover {
+    border: 1px solid black;
+ }
+
+ .dropdown-item:hover {
+   background-color: rgb(210, 210, 211);
+   color: #0d6efd;
+ }
+
+ .text-sm {
+   font-size: 0.8rem;
+ }
+
+ a {
+   cursor: pointer;
+ }

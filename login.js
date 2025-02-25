@@ -1,29 +1,43 @@
-function signIn() {
-    let oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
-    let form = document.createElement('form')
-    form.setAttribute('method', 'GET')
-    form.setAttribute('action', oauth2Endpoint)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
-    let params = {
-      "client_id": "452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com",
-      "redirect_uri":"https://www.projectmanager.publicvm.com/workplace.html",
-      "response_type":"token",
-      "scope":"https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
-      "include_granted_scopes":true,
-      'state':'pass-through-value'
-    }
+const firebaseConfig = {
+  apiKey: "AIzaSyDQfHxR48pL0kOrIBvXYIRwABCNd8SiYNw",
+  authDomain: "project-manager-60ba7.firebaseapp.com",
+  projectId: "project-manager-60ba7",
+  storageBucket: "project-manager-60ba7.firebasestorage.app",
+  messagingSenderId: "501664415484",
+  appId: "1:501664415484:web:f1f26a59e9d73048d42179",
+  measurementId: "G-1D0X2SQYT3"
+};
 
-    for(var p in params) {
-      let input = document.createElement('input')
-      input.setAttribute('type', 'hidden')
-      input.setAttribute('name', p)
-      input.setAttribute('value', params[p])
-      form.appendChild(input)
-    }
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const provider = new GoogleAuthProvider();
+const auth = getAuth();
+auth.language = 'en'
 
-    document.body.appendChild(form)
+const googleLoginButton = document.getElementById("google-login-btn")
+googleLoginButton.addEventListener('click', function() {
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
 
-    form.submit()
+    //window.location.href = `../workplace.html?uid=${encodeURIComponent(user.uid)}`;
+
+    window.location.href = "../workplace.html"
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    //const email = error.customData.email;
+    //const credential = GoogleAuthProvider.credentialFromError(error);
+  });
+})
+
+async function gettingIdToken() {
+  return await getIdToken
 }
 
 // Navbar Scrolling effect
