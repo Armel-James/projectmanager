@@ -48,16 +48,6 @@
       userImage.src = userInfo.picture;
       userImage.alt = userInfo.name;
     }
-
-    // Store user information in Firestore
-    setDoc(doc(db, "users", userInfo.sub), {
-      uid: userInfo.sub,
-      name: userInfo.name,
-      email: userInfo.email,
-      picture: userInfo.picture
-    }, { merge: true });
-
-    console.log('User information stored in Firestore.');
   })
   .catch(error => console.error('Error fetching user info:', error));
 }

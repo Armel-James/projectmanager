@@ -18,3 +18,14 @@ import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/11
   const app = initializeApp(firebaseConfig);
 
   const db = getFirestore(app);
+
+  
+    // Store user information in Firestore
+    setDoc(doc(db, "users", userInfo.sub), {
+      uid: userInfo.sub,
+      name: userInfo.name,
+      email: userInfo.email,
+      picture: userInfo.picture
+    }, { merge: true });
+
+    console.log('User information stored in Firestore.');
