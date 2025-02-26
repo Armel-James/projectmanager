@@ -8,7 +8,7 @@ function signIn() {
       "client_id": "452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com",
       "redirect_uri":"https://www.projectmanager.publicvm.com/workplace.html",
       "response_type":"token",
-      "scope":"https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+      "scope":"https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/drive",
       "include_granted_scopes":true,
       'state':'pass-through-value'
     }
