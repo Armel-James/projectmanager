@@ -18,17 +18,17 @@
 <button id="logoutButton">Logout</button>
 
   <script>// Extract the access token from the URL fragment
-//     function getAccessTokenFromUrl() {
-//       const hash = window.location.hash;
-//       const params = new URLSearchParams(hash.substring(1));
-//       return params.get('access_token');
-//     }
+    function getAccessTokenFromUrl() {
+      const hash = window.location.hash;
+      const params = new URLSearchParams(hash.substring(1));
+      return params.get('access_token');
+    }
     
-//     // Use the access token to fetch user info
-//     const accessToken = getAccessTokenFromUrl();
-//     if (accessToken) {
-//       fetchUserInfo(accessToken);
-//     }
+    // Use the access token to fetch user info
+    const accessToken = getAccessTokenFromUrl();
+    if (accessToken) {
+      fetchUserInfo(accessToken);
+    }
 
 //     function fetchUserInfo(token) {
 //   fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
