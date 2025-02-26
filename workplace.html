@@ -3,37 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com">
-
     <title>Project Manger [Workplace]</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
-  <script src="https://apis.google.com/js/platform.js?onload=initializeGapi" async defer></script>
-    <script>
-        function initializeGapi() {
-          gapi.load('auth2', function() {
-            gapi.auth2.init({
-              client_id: '452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com'
-            });
-          });
-        }
-      </script>   
-      <div>Test</div>  
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
-      <script>
-        function onSignIn(googleUser) {
-          // Get the user's profile information
-          var profile = googleUser.getBasicProfile();
-          console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-          console.log('Full Name: ' + profile.getName());
-          console.log('Given Name: ' + profile.getGivenName());
-          console.log('Family Name: ' + profile.getFamilyName());
-          console.log('Image URL: ' + profile.getImageUrl());
-          console.log('Email: ' + profile.getEmail()); // This is the primary email address
-        }
-      </script>       
+  <p>Name: <span id="userName"></span></p>
+<p>Email: <span id="userEmail"></span></p>
+<img id="userImage" src="" alt="User's profile image" />
+  <script>// Extract the access token from the URL fragment
+    function getAccessTokenFromUrl() {
+      const hash = window.location.hash;
+      const params = new URLSearchParams(hash.substring(1));
+      return params.get('access_token');
+    }
+    
+    // Use the access token to fetch user info
+    const accessToken = getAccessTokenFromUrl();
+    if (accessToken) {
+      fetchUserInfo(accessToken);
+    }
+
+    function fetchUserInfo(token) {
+  fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  .then(response => response.json())
+  .then(userInfo => {
+    // userInfo contains the user's profile information
+    console.log('User Info:', userInfo);
+    // Example: Display user's name and email
+    document.getElementById('userName').textContent = userInfo.name;
+    document.getElementById('userEmail').textContent = userInfo.email;
+    const userImage = document.getElementById('userImage');
+    if (userImage) {
+      userImage.src = userInfo.picture;
+      userImage.alt = userInfo.name;
+    }
+  })
+  .catch(error => console.error('Error fetching user info:', error));
+}
+
+    </script>      
 </body>
 </html>
