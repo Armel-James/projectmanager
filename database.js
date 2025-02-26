@@ -20,4 +20,4 @@ import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/11
   const db = getFirestore(app);
 
   
-    
+  export { db, setDoc, doc };

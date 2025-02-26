@@ -17,7 +17,9 @@
 
 <button id="logoutButton">Logout</button>
 
-  <script>// Extract the access token from the URL fragment
+  <script type="module">
+  import { db, setDoc, doc } from './database.js';
+  // Extract the access token from the URL fragment
     function getAccessTokenFromUrl() {
       const hash = window.location.hash;
       const params = new URLSearchParams(hash.substring(1));
