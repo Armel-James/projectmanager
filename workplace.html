@@ -24,12 +24,12 @@
         function onSignIn(googleUser) {
           // Get the user's profile information
           var profile = googleUser.getBasicProfile();
-          document.writeln('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-          document.writeln('Full Name: ' + profile.getName());
-          document.writeln('Given Name: ' + profile.getGivenName());
-          document.writeln('Family Name: ' + profile.getFamilyName());
-          document.writeln('Image URL: ' + profile.getImageUrl());
-          document.writeln('Email: ' + profile.getEmail()); // This is the primary email address
+          console.writeln('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+          console.writeln('Full Name: ' + profile.getName());
+          console.writeln('Given Name: ' + profile.getGivenName());
+          console.writeln('Family Name: ' + profile.getFamilyName());
+          console.writeln('Image URL: ' + profile.getImageUrl());
+          console.writeln('Email: ' + profile.getEmail()); // This is the primary email address
         }
       </script>       
 </body>
