@@ -1,3 +1,7 @@
+body {
+  height: 100vh;
+}
+
 .dropdown-menu-right {
     right: 0 !important;
     left: auto !important;
@@ -40,6 +44,24 @@
  .fixed-50 {
   height: 50;
  }
+
+ .wrapper {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 50px auto;
+  grid-template-columns: 280px auto;
+ }
+
+ .wrapper-item-1 {
+  grid-column: span 2;
+ }
+
+ .wrapper-item-2 {
+  grid-row: 2;
+ }
+
+ 
 
  @media (max-width: 576px) { /* Apply only on small screens */
   .dropdown-menu {
