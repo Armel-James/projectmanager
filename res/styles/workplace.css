@@ -33,6 +33,11 @@ body {
   height: 35px;
  }
 
+ .sidebar-icon {
+  height: 30px;
+  width: 30px;
+ }
+
  .text-sm {
    font-size: 0.8rem;
  }
@@ -61,6 +66,15 @@ body {
   grid-row: 2;
  }
 
+ .active {
+  background-color: #797979 !important;
+ }
+
+ .sidebar {
+    width: 280px; 
+    height: 100%;
+    transition: 500ms ease;
+ }
  
 
  @media (max-width: 576px) { /* Apply only on small screens */
@@ -73,5 +87,15 @@ body {
 @media (max-width: 992px) {
   .fixed-50 {
     height: 50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-item-title {
+    display: none;
+  }
+
+  .sidebar {
+    width: 50px;
   }
 }
