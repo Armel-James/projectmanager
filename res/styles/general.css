@@ -1,0 +1,27 @@
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #b6b5b5;
+    border-radius: 7px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Vertical Overflow styling */
+  .overflow-height {
+    box-shadow: 
+    inset 0 8px 8px -8px rgba(0, 0, 0, 0.3),  /* Top shadow */
+    inset 0 -8px 8px -8px rgba(0, 0, 0, 0.3); /* Bottom shadow */
+  }
