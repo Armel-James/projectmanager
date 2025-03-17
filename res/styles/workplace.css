@@ -89,9 +89,7 @@ grid-row: 2;
 
 /* Vertical Overflow styling */
 .overflow-height {
-  box-shadow: 
-  outset 0 8px 8px 8px rgba(0, 0, 0, 0.3),  /* Top shadow */
-  inset 0 8px 8px 8px rgba(0, 0, 0, 0.3); /* Bottom shadow */
+  
 }
 
 .btn-icon {
