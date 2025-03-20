@@ -14,7 +14,7 @@ monitorAuthState((user) => {
   }
 })
 
-import { db, setDoc, doc } from '../scripts/firebase/auth.js';
+import { db, setDoc, doc } from '../scripts/firebase/firebase-config.js';
 
     function getAccessTokenFromUrl() {
       const hash = window.location.hash;
