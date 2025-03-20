@@ -76,22 +76,18 @@
         console.error('Error fetching user info or storing in Firestore:', error);
       }
     }
-      
-      //new signout code
-      let googleAuth;
 
-function initializeGisClient() {
-  googleAuth = google.accounts.oauth2.initTokenClient({
-    client_id: '452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com',
-    scope: 'profile email',
-    callback: handleTokenResponse,
-  });
-}
-window.signOut = function() {
-  googleAuth.accounts.oauth2.revoke(accessToken, () => {
-    console.log('User signed out.');
-  });
-}
+    function signOut() {
+        fetch("https://oauth2.googleapis.com/revoke?token=" + info['accessToken'],{
+            method:'POST',
+            headers:{
+                'Content-type':'application/x-www-form-urlencoded'
+            }
+        })
+        .then((data)) => {
+            location.href = "./index.html"
+        }
+    }
 
   </script>
     
