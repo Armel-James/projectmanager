@@ -31,7 +31,7 @@
       <p class="text-muted" id="profileCardEmail"></p>
     </div>
     <div class="d-grid gap-2">
-      <button class="btn btn-outline-danger" id="logoutButton" onclick="signOut()">Sign out</button>
+      <button class="btn btn-outline-danger" onclick="signOut()">Sign out</button>
     </div>
   </div>
 
@@ -81,7 +81,7 @@
         console.error('Error fetching user info or storing in Firestore:', error);
       }
     }
-document.getElementById('logoutButton').addEventListener('click', signOut);
+      
       //new signout code
       let googleAuth;
 
