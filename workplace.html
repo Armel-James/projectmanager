@@ -99,7 +99,7 @@
     document.getElementById('logoutButton').addEventListener('click', signOut);
 
     function signOut() {
-      const auth2 = gapi.auth2.getAuthInstance();
+      const auth2 = gapi.auth2.initializeGapi();
       auth2.signOut().then(function () {
         console.log('User signed out.');
         window.location.href='projectmanager.publicvm.com';
