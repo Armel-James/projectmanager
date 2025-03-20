@@ -26,9 +26,6 @@ export const monitorAuthState = (callback) => {
   return onAuthStateChanged(auth, callback);
 };
 
-import { signInWithGoogle } from "./login.js";
-document.getElementById('google-login-btn').addEventListener('click', signInWithGoogle);
-
 const signOutButton = document.getElementById("sign-out-btn")
 
 signOutButton.addEventListener("click", signOutUser)
