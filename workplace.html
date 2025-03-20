@@ -92,8 +92,7 @@ function initializeGisClient() {
     callback: handleTokenResponse,
   });
 }
-function signOut() {
-    initializeGisClient();
+window.signOut = function() {
   googleAuth.revoke(accessToken, () => {
     console.log('User signed out.');
   });
