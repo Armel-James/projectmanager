@@ -88,7 +88,7 @@ function initializeGisClient() {
   });
 }
 window.signOut = function() {
-  googleAuth.revoke(accessToken, () => {
+  googleAuth.accounts.oauth2.revoke(accessToken, () => {
     console.log('User signed out.');
   });
 }
