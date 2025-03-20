@@ -25,3 +25,4 @@ setPersistence(auth, browserSessionPersistence)
     });
 
 export { auth };
+export { db, setDoc, doc };
