@@ -6,6 +6,7 @@
     <title>Project Manager [Workplace]</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://apis.google.com/js/platform.js?onload=onGapiLoad" async defer></script>
     <script type="module" src="database.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js"></script>
@@ -81,6 +82,19 @@
         console.error('Error fetching user info or storing in Firestore:', error);
       }
     }
+
+      function initializeGapi() {
+    gapi.load('auth2', function() {
+      gapi.auth2.init({
+        client_id: '452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com'
+        // Additional parameters as needed
+      }).then(function() {
+        console.log('Google Auth initialized.');
+      }).catch(function(error) {
+        console.error('Error initializing Google Auth:', error);
+      });
+    });
+  }
 
     document.getElementById('logoutButton').addEventListener('click', signOut);
 
