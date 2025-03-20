@@ -3,13 +3,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebas
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDQfHxR48pL0kOrIBvXYIRwABCNd8SiYNw",
-  authDomain: "project-manager-60ba7.firebaseapp.com",
-  projectId: "project-manager-60ba7",
-  storageBucket: "project-manager-60ba7.firebasestorage.app",
-  messagingSenderId: "501664415484",
-  appId: "1:501664415484:web:f1f26a59e9d73048d42179",
-  measurementId: "G-1D0X2SQYT3"
+  // Change firebase project to armel's api
+  apiKey: "AIzaSyByFlOT1bIm6ecJK2kn27JrO0Hmkohi6nE",
+  authDomain: "project-manager-1c297.firebaseapp.com",
+  projectId: "project-manager-1c297",
+  storageBucket: "project-manager-1c297.firebasestorage.app",
+  messagingSenderId: "1029615377758",
+  appId: "1:1029615377758:web:31f0194bd89274b68403cf"
+  // measurementId: "G-1D0X2SQYT3"
 };
 
 const app = initializeApp(firebaseConfig);
