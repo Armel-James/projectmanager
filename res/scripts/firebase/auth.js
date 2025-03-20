@@ -5,7 +5,7 @@ const provider = new GoogleAuthProvider();
 
 export const signInWithGoogle = async () => {
     try {
-        const result = await signInWithRedirect(auth, provider); // change sign in pop up to redirect
+        const result = await signInWithPopup(auth, provider);
         console.log('User signed in:', result.user);
         window.location.href = "../workplace.html"
     } catch (error) {
