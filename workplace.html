@@ -26,7 +26,7 @@
       <p class="text-muted" id="profileCardEmail"></p>
     </div>
     <div class="d-grid gap-2">
-      <button class="btn btn-outline-danger" onclick="signOut()">Sign out</button>
+      <button class="btn btn-outline-danger" id="signOutUser">Sign out</button>
     </div>
   </div>
 
@@ -77,26 +77,15 @@
       }
     }
 
-    function signOut() {
-        fetch("https://oauth2.googleapis.com/revoke?token=" + info['accessToken'],{
-            method:'POST',
-            headers:{
-                'Content-type':'application/x-www-form-urlencoded'
-            }
-        })
-        .then(data => {
-            location.href = "./index.html"
-        })
-    }
-
   </script>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 		<script src="https://apis.google.com/js/platform.js" async defer></script>
-   <script type="javascript" src="https://accounts.google.com/gsi/client" async defer></script>
+    <script type="javascript" src="https://accounts.google.com/gsi/client" async defer></script>
     <script type="module" src="database.js"></script>
+    <script type="module" src="login.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js"></script>
 </body>
 </html>

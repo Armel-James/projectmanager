@@ -1,30 +1,46 @@
-function signIn() {
-    let oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth"
-    let form = document.createElement('form')
-    form.setAttribute('method', 'GET')
-    form.setAttribute('action', oauth2Endpoint)
+import { auth } from "./database.js";
+import { GoogleAuthProvider, signOut, onAuthStateChanged, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
-    let params = {
-      "client_id": "452942834062-um560gq2me5vgm0uvo0bp68gruegukks.apps.googleusercontent.com",
-      "redirect_uri":"https://www.projectmanager.publicvm.com/workplace.html",
-      "response_type":"token",
-      "scope":"https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/drive",
-      "include_granted_scopes":true,
-      'state':'pass-through-value'
-    }
+const provider = new GoogleAuthProvider();
 
-    for(var p in params) {
-      let input = document.createElement('input')
-      input.setAttribute('type', 'hidden')
-      input.setAttribute('name', p)
-      input.setAttribute('value', params[p])
-      form.appendChild(input)
-    }
+export const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    console.log('User signed in:', result.user);
+    window.location.href = "workplace.html"
+  } catch (error) {
+    console.error('Error during sign-in:', error);
+  }
+};
 
-    document.body.appendChild(form)
+export const signOutUser = async () => {
+  try {
+    await signOut(auth);
+    window.location.href = "index.html";
+  } catch (error) {
+    console.error('Error during sign-out:', error);
+  }
+};
 
-    form.submit()
-}
+export const monitorAuthState = (callback) => {
+  return onAuthStateChanged(auth, callback);
+};
+
+document.getElementById('google-login-btn').addEventListener('click', signInWithGoogle);
+
+const signOutButton = document.getElementById("sign-out-btn")
+
+signOutButton.addEventListener("click", signOutUser)
+monitorAuthState((user) => {
+  if (user) {
+    document.getElementById("user-name").textContent = user.displayName;
+    document.getElementById("user-email").textContent = user.email;
+    document.getElementById("profile-pic").src = user.photoURL
+    document.getElementById("profile-pic-big").src = user.photoURL
+  } else {
+    window.location.href = "index.html";
+  }
+})
 
 // Navbar Scrolling effect
 $(window).scroll(function(){
