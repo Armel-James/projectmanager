@@ -14,7 +14,7 @@ export const signInWithGoogle = async () => {
 };
 
 
-import { db, setDoc, doc } from '../scripts/firebase/firebase-config.js';
+import { db, setDoc, doc } from './firebase-config.js';
 
     function getAccessTokenFromUrl() {
       const hash = window.location.hash;
