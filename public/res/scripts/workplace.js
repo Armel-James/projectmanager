@@ -1,5 +1,8 @@
 import { signOutUser, monitorAuthState } from "../scripts/firebase/auth.js";
 
+const projectModalCancel = document.getElementById("projectModalCancel")
+projectModalCancel.addEventListener("click", )
+
 const signOutButton = document.getElementById("sign-out-btn")
 
 signOutButton.addEventListener("click", signOutUser)
@@ -10,6 +13,7 @@ monitorAuthState((user) => {
     document.getElementById("profile-pic").src = user.photoURL
     document.getElementById("profile-pic-big").src = user.photoURL
   } else {
+    firebase.auth().signOut()
     window.location.href = "index.html";
   }
 })

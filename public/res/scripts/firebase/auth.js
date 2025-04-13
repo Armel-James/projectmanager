@@ -1,12 +1,15 @@
 import { auth } from "./firebase-config.js";
-import { GoogleAuthProvider, signOut, onAuthStateChanged, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+import { GoogleAuthProvider, signOut, onAuthStateChanged, signInWithPopup/*signInWithRedirect*/ } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 import { db, setDoc, doc } from "./firebase-config.js"
 
 const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+    prompt: 'select_account'
+})
 
 export const signInWithGoogle = async () => {
     try {
-        const result = await signInWithPopup(auth, provider);
+        const result = await signInWithPopup/*signInWithRedirect*/(auth, provider);
 
         // The signed-in user info
         const user = result.user;
