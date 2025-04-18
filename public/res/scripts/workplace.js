@@ -172,7 +172,7 @@ monitorAuthState(async (user) => {
 
 
 import { auth, db } from "./firebase/firebase-config.js";
-import { doc, collection, setDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+import { doc, collection, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
 
 // Data for a new project
 
