@@ -1,11 +1,12 @@
 import { signOutUser, monitorAuthState } from "../scripts/firebase/auth.js";
 
-const projectModalCancel = document.getElementById("projectModalCancel")
+// const projectModalCancel = document.getElementById("projectModalCancel")
 //projectModalCancel.addEventListener("click", )
 
 const signOutButton = document.getElementById("sign-out-btn")
 
 signOutButton.addEventListener("click", signOutUser)
+
 monitorAuthState((user) => {
   if (user) {
     document.getElementById("user-name").textContent = user.displayName;
@@ -14,7 +15,8 @@ monitorAuthState((user) => {
     document.getElementById("profile-pic-big").src = user.photoURL
     console.log(user.displayName)
   } else {
-    firebase.auth().signOut()
+    // firebase.auth().signOut()
+    console.log("signed out. monAuthState")
     window.location.href = "index.html";
   }
 })
@@ -59,7 +61,7 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
 
         // Close modal
         const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
-        projectModal.hide();
+        // projectModal.hide();
 
         // Reset form
         form.reset();
@@ -112,6 +114,61 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
     form.reportValidity();
   }*/
 });
+
+
+
+
+
+
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+function renderProjectCard(project) {
+  const { projectName, description, startDate, endDate } = project;
+  return `
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">${projectName}</h5>
+              <p class="card-text">${description}</p>
+              <p class="card-text"><small class="text-muted">Start: ${startDate}</small></p>
+              <p class="card-text"><small class="text-muted">End: ${endDate}</small></p>
+            </div>
+          </div>
+        </div>
+      `;
+}
+
+// Listen for auth state changes
+monitorAuthState(async (user) => {
+  if (user) {
+    const projectsContainer = document.getElementById('projectsContainer');
+    const projectsRef = collection(db, "users", user.uid, "Projects");
+    const querySnapshot = await getDocs(projectsRef);
+
+    querySnapshot.forEach((doc) => {
+      const projectData = doc.data();
+      // Convert Firestore Timestamps to readable dates if necessary
+      const formattedProject = {
+        projectName: projectData.projectName,
+        description: projectData.description,
+        startDate: projectData.startDate,
+        endDate: projectData.endDate
+      };
+      projectsContainer.innerHTML += renderProjectCard(formattedProject);
+    });
+  } else {
+    // Handle unauthenticated state
+    console.log("User is not signed in.");
+  }
+});
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
+
+
+
+
+
+
 
 
 import { auth, db } from "./firebase/firebase-config.js";

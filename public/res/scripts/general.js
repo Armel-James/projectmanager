@@ -1,5 +1,5 @@
 /* Overflow styling */
-const div = document.getElementById('listContainer');
+const div = document.getElementById('projectsContainer');
 
 function checkOverflow() {
     if (div.scrollHeight > div.clientHeight) {
