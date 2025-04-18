@@ -74,45 +74,45 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
   })
 
   //==================
-/*
-  if (form.checkValidity()) {
-    // Gather form data
-    const projectName = document.getElementById('projectName').value;
-    const description = document.getElementById('description').value;
-    const startDate = document.getElementById('startDate').value;
-    const endDate = document.getElementById('endDate').value;
-
-    // Reference to the user's document
-    const userRef = doc(db, "users", auth.currentUser.uid);
-
-    console.log(auth.currentUser.uid);
-    // Reference to the 'Projects' subcollection
-    const projectsRef = collection(userRef, "Projects");// maybe use setDoc()
-    // Data for a new project
-    const newProject = {
-      projectName,
-      description,
-      startDate,
-      endDate,
-      // Additional project fields
-    };
-    await setDoc(doc(projectsRef), newProject, { merge: true });
-
-    // Output form data to console (replace this with your desired functionality)
-    console.log('Project Name:', projectName);
-    console.log('Description:', description);
-    console.log('Start Date:', startDate);
-    console.log('End Date:', endDate);
-
-    // Close modal
-    const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
-    projectModal.hide();
-
-    // Reset form
-    form.reset();
-  } else {
-    form.reportValidity();
-  }*/
+  /*
+    if (form.checkValidity()) {
+      // Gather form data
+      const projectName = document.getElementById('projectName').value;
+      const description = document.getElementById('description').value;
+      const startDate = document.getElementById('startDate').value;
+      const endDate = document.getElementById('endDate').value;
+  
+      // Reference to the user's document
+      const userRef = doc(db, "users", auth.currentUser.uid);
+  
+      console.log(auth.currentUser.uid);
+      // Reference to the 'Projects' subcollection
+      const projectsRef = collection(userRef, "Projects");// maybe use setDoc()
+      // Data for a new project
+      const newProject = {
+        projectName,
+        description,
+        startDate,
+        endDate,
+        // Additional project fields
+      };
+      await setDoc(doc(projectsRef), newProject, { merge: true });
+  
+      // Output form data to console (replace this with your desired functionality)
+      console.log('Project Name:', projectName);
+      console.log('Description:', description);
+      console.log('Start Date:', startDate);
+      console.log('End Date:', endDate);
+  
+      // Close modal
+      const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
+      projectModal.hide();
+  
+      // Reset form
+      form.reset();
+    } else {
+      form.reportValidity();
+    }*/
 });
 
 
@@ -123,18 +123,46 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
 // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 function renderProjectCard(project) {
   const { projectName, description, startDate, endDate } = project;
-  return `
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">${projectName}</h5>
-              <p class="card-text">${description}</p>
-              <p class="card-text"><small class="text-muted">Start: ${startDate}</small></p>
-              <p class="card-text"><small class="text-muted">End: ${endDate}</small></p>
+        // <div class="col-md-4">
+        //   <div class="card h-100">
+        //     <div class="card-body">
+        //       <h5 class="card-title">${projectName}</h5>
+        //       <p class="card-text">${description}</p>
+        //       <p class="card-text"><small class="text-muted">Start: ${startDate}</small></p>
+        //       <p class="card-text"><small class="text-muted">End: ${endDate}</small></p>
+        //     </div>
+        //   </div>
+        // </div>
+
+        
+  return `<div class="card mx-1 my-1">
+          <div class="card-body project-card-content">
+            <div class="card-title">
+              <div class="project-content">
+                <h6 class="project-title">${projectName}</h6>
+                <p class="project-description">${description}</p>
+                <p class="card-text"><small class="text-muted">Start: ${startDate}</small></p>
+                <p class="card-text"><small class="text-muted">End: ${endDate}</small></p>
+              </div>
+              
+              <div class="card-button-container">
+                <button type="button" class="card-btn btn-delete">
+                  <img src="res/images/delete.png">
+                </button>
+                
+                <button type="button" class="card-btn btn-info">
+                  <img src="res/images/info.png">
+                </button>
+              </div>
+            </div>
+            
+            <div class="d-flex align-items-end justify-content-end bg-green">
+              <a class="card-play">
+                <img src="res/images/play.png">
+              </a>
             </div>
           </div>
-        </div>
-      `;
+        </div>`;
 }
 
 // Listen for auth state changes

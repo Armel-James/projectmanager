@@ -40,9 +40,12 @@
 }
 
 .card-button-container {
+    position: absolute;
+    bottom: 10%;
     display: flex;
     flex-direction: row;
     column-gap: 15px;
+    /* z-index: 1; */
 }
 
 .card {
@@ -89,6 +92,10 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr auto;
+}
+
+.project-content {
+    height: 80%;
 }
 
 .card-play {
