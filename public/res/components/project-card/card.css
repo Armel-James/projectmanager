@@ -1,0 +1,120 @@
+.btn-delete {
+    background-color: #D9543D;
+    
+}
+
+.btn-delete > img {
+    width: 20px;
+    height: auto;
+}
+
+.btn-delete:hover {
+    background-color: #a13e2d;
+}
+
+.btn-info {
+    background-color: #3D86D9;
+}
+
+.btn-info > img {
+    width: 20px;
+    height: auto;
+}
+
+.btn-info:hover {
+    background-color: #2f67a7;
+}
+
+.card-btn {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    border: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+    transform: translateY(50px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+}
+
+.card-button-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+}
+
+.card {
+    width: 230px;
+    transition: 300ms ease;
+    height: 150px;
+    padding: 0px !important;
+    border-radius: 5px;
+}
+
+.card:hover .card-btn {
+    transform: scale(1.02);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover .card-play {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(0);
+}
+
+.card-body {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.card:hover {
+    border: 1px solid black;
+    box-shadow: rgba(38, 38, 224, 0.2) 5px 7px 29px 0px;;
+}
+
+.project-card-content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.card-play {
+    width: 30px;
+    height: 100%;
+    background: #D9943D;
+    border-radius: 0px 5px 5px 0px;
+    display: none;
+    transition: opacity 0.5s ease;
+}
+
+.project-title {
+    font-size: 1.2rem;
+}
+
+.project-description {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+@media screen and (max-width: 670px) {
+    .card {
+      width: 100%;
+    }
+}
