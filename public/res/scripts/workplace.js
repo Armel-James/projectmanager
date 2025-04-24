@@ -134,6 +134,29 @@ function renderProjectCard(project) {
         //   </div>
         // </div>
 
+  return    `<div class="card mx-1 my-1">
+                <div class="card-body project-card-content">
+                    <div class="card-title">
+                        <div class="project-content">
+                            <h6 class="project-title">${projectName}</h6>
+                            <p class="project-description">${description}</p>
+                        </div>
+                        <div class="card-button-container">
+                            <button type="button" class="card-btn btn-delete">
+                                <img src="res/images/delete.png">
+                            </button>
+                            <button type="button" class="card-btn btn-info">
+                                <img src="res/images/info.png">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end justify-content-end bg-green">
+                        <a class="card-play">
+                            <img src="res/images/play.png">
+                        </a>
+                    </div>
+                </div>
+            </div>`
         
   return `<div class="card mx-1 my-1">
           <div class="card-body project-card-content">
