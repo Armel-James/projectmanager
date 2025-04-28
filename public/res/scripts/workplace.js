@@ -42,7 +42,7 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
 
         console.log(auth.currentUser.uid);
         // Reference to the 'Projects' subcollection
-        const projectsRef = collection(userRef, "Projects");// maybe use setDoc()
+        const projectsRef = collection(userRef, "Projects");
         // Data for a new project
         const newProject = {
           projectName,
@@ -116,61 +116,21 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
 });
 
 
-
-
-
-
-// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 function renderProjectCard(project) {
-  const { projectName, description, startDate, endDate } = project;
-        // <div class="col-md-4">
-        //   <div class="card h-100">
-        //     <div class="card-body">
-        //       <h5 class="card-title">${projectName}</h5>
-        //       <p class="card-text">${description}</p>
-        //       <p class="card-text"><small class="text-muted">Start: ${startDate}</small></p>
-        //       <p class="card-text"><small class="text-muted">End: ${endDate}</small></p>
-        //     </div>
-        //   </div>
-        // </div>
-
-  // return    `<div class="card mx-1 my-1">
-  //               <div class="card-body project-card-content">
-  //                   <div class="card-title">
-  //                       <div class="project-content">
-  //                           <h6 class="project-title">${projectName}</h6>
-  //                           <p class="project-description">${description}</p>
-  //                       </div>
-  //                       <div class="card-button-container">
-  //                           <button type="button" class="card-btn btn-delete">
-  //                               <img src="res/images/delete.png">
-  //                           </button>
-  //                           <button type="button" class="card-btn btn-info">
-  //                               <img src="res/images/info.png">
-  //                           </button>
-  //                       </div>
-  //                   </div>
-  //                   <div class="d-flex align-items-end justify-content-end bg-green">
-  //                       <a class="card-play">
-  //                           <img src="res/images/play.png">
-  //                       </a>
-  //                   </div>
-  //               </div>
-  //           </div>`
-        
+  const { projectId, projectName, description, startDate, endDate } = project;
   return `<div class="card mx-1 my-1">
           <div class="card-body project-card-content">
             <div class="card-title">
-              <div class="project-content">
+              <div class="project-content" id="${projectId}">
                 <h6 class="project-title">${projectName}</h6>
                 <p class="project-description">${description}</p>
                 <p class="card-text"><small class="text-muted">Start: ${startDate}</small></p>
                 <p class="card-text"><small class="text-muted">End: ${endDate}</small></p>
               </div>
               
-              <div class="card-button-container" id="btn-delete" onclick="del()">
-                <button type="button" class="card-btn btn-delete" id="btn-delete" onclick="del()">
-                  <img src="res/images/delete.png" id="btn-delete" onclick="del()">
+              <div class="card-button-container">
+                <button type="button" class="card-btn btn-delete">
+                  <img src="res/images/delete.png">
                 </button>
                 
                 <button type="button" class="card-btn btn-info">
@@ -188,7 +148,7 @@ function renderProjectCard(project) {
         </div>`;
 }
 
-// Listen for auth state changes
+
 monitorAuthState(async (user) => {
   if (user) {
     const projectsContainer = document.getElementById('projectsContainer');
@@ -196,9 +156,10 @@ monitorAuthState(async (user) => {
     const querySnapshot = await getDocs(projectsRef);
 
     querySnapshot.forEach((doc) => {
+      const projectId = doc.id;
       const projectData = doc.data();
-      // Convert Firestore Timestamps to readable dates if necessary
       const formattedProject = {
+        projectId: projectId,
         projectName: projectData.projectName,
         description: projectData.description,
         startDate: projectData.startDate,
@@ -206,36 +167,20 @@ monitorAuthState(async (user) => {
       };
       projectsContainer.innerHTML += renderProjectCard(formattedProject);
     });
+    const deleteButtons = document.querySelectorAll(".btn-delete");
+
+    deleteButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        console.log("Delete button clicked!");
+        // 
+      });
+    });
   } else {
-    // Handle unauthenticated state
     console.log("User is not signed in.");
   }
 });
-// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
-
-
-const btnDelete = document.getElementById('btn-delete');
-
-// Add event listener to the btn-delete button
-btnDelete.addEventListener('click', () => {
-  // Handle the click event here
-  console.log('Button deleted!');
-});
-function del() {
-  btnDelete
-  console.log("it works");
-}
-
-
-
 
 
 
 import { auth, db } from "./firebase/firebase-config.js";
 import { doc, collection, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
-
-// Data for a new project
-
-
-// Add a new project document with an auto-generated ID
