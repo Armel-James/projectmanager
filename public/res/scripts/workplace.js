@@ -72,47 +72,6 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
       console.log("error")
     }
   })
-
-  //==================
-  /*
-    if (form.checkValidity()) {
-      // Gather form data
-      const projectName = document.getElementById('projectName').value;
-      const description = document.getElementById('description').value;
-      const startDate = document.getElementById('startDate').value;
-      const endDate = document.getElementById('endDate').value;
-  
-      // Reference to the user's document
-      const userRef = doc(db, "users", auth.currentUser.uid);
-  
-      console.log(auth.currentUser.uid);
-      // Reference to the 'Projects' subcollection
-      const projectsRef = collection(userRef, "Projects");// maybe use setDoc()
-      // Data for a new project
-      const newProject = {
-        projectName,
-        description,
-        startDate,
-        endDate,
-        // Additional project fields
-      };
-      await setDoc(doc(projectsRef), newProject, { merge: true });
-  
-      // Output form data to console (replace this with your desired functionality)
-      console.log('Project Name:', projectName);
-      console.log('Description:', description);
-      console.log('Start Date:', startDate);
-      console.log('End Date:', endDate);
-  
-      // Close modal
-      const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
-      projectModal.hide();
-  
-      // Reset form
-      form.reset();
-    } else {
-      form.reportValidity();
-    }*/
 });
 
 
@@ -124,11 +83,12 @@ function renderProjectCard(project) {
               <div class="project-content" id="${projectId}">
                 <h6 class="project-title">${projectName}</h6>
                 <p class="project-description">${description}</p>
-                <p class="card-text"><small class="text-muted">Start: ${startDate}</small></p>
-                <p class="card-text"><small class="text-muted">End: ${endDate}</small></p>
+                <p class=" to-hide"><small class="text-muted">Start: ${startDate}</small></p>
+                <p class=" to-hide"><small class="text-muted">End: ${endDate}</small></p>
               </div>
               
               <div class="card-button-container">
+                <input class="hdn cntid" value="${projectId}"/>
                 <button type="button" class="card-btn btn-delete">
                   <img src="res/images/delete.png">
                 </button>
@@ -147,7 +107,6 @@ function renderProjectCard(project) {
           </div>
         </div>`;
 }
-
 
 monitorAuthState(async (user) => {
   if (user) {
@@ -170,9 +129,23 @@ monitorAuthState(async (user) => {
     const deleteButtons = document.querySelectorAll(".btn-delete");
 
     deleteButtons.forEach(button => {
-      button.addEventListener("click", function () {
-        console.log("Delete button clicked!");
-        // 
+      button.addEventListener("click", async function () {
+        /*
+            TODO:
+        */
+        const id = button.parentElement.querySelector(".cntid").value;
+        console.log(user.uid);
+        console.log(id);
+        try {
+          // [ERROR] FirebaseError: [code=permission-denied]: Missing or insufficient permissions.
+          await deleteDoc(doc(db, "Projects", id));
+          const card = button.parentElement.parentElement.parentElement.parentElement;
+          card.remove();
+        }
+        catch (error){
+          console.log("Error deleting data: " + error);
+        }
+        
       });
     });
   } else {
@@ -181,6 +154,5 @@ monitorAuthState(async (user) => {
 });
 
 
-
 import { auth, db } from "./firebase/firebase-config.js";
-import { doc, collection, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+import { doc, collection, setDoc, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
