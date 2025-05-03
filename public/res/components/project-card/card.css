@@ -62,6 +62,20 @@
     transform: translateY(0);
 }
 
+#xxx {
+    background-color: black;
+}
+
+.to-hide {
+    transition: 0.3ms;
+    opacity: 1;
+}
+
+.card:hover .to-hide {
+    pointer-events: none;
+    opacity: 0;
+}
+
 .card:hover .card-play {
     display: flex;
     justify-content: center;
@@ -117,7 +131,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 
 
 @media screen and (max-width: 670px) {
