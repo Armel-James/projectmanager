@@ -138,7 +138,7 @@ monitorAuthState(async (user) => {
         console.log(id);
         try {
           // [ERROR] FirebaseError: [code=permission-denied]: Missing or insufficient permissions.
-          await deleteDoc(doc(db, "Projects", id));
+          await deleteDoc(doc(db, "users", user.uid, "Projects", id));
           const card = button.parentElement.parentElement.parentElement.parentElement;
           card.remove();
         }
