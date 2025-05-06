@@ -118,10 +118,10 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
 
 function renderProjectCard(project) {
   const { projectId, projectName, description, startDate, endDate } = project;
-  return `<div class="card mx-1 my-1">
+  return `<div class="card mx-1 my-1" id=${projectId}>
           <div class="card-body project-card-content">
             <div class="card-title">
-              <div class="project-content" id="${projectId}">
+              <div class="project-content">
                 <h6 class="project-title">${projectName}</h6>
                 <p class="project-description">${description}</p>
                 <p class="card-text"><small class="text-muted">Start: ${startDate}</small></p>
@@ -129,7 +129,7 @@ function renderProjectCard(project) {
               </div>
               
               <div class="card-button-container">
-                <button type="button" class="card-btn btn-delete">
+                <button type="button" class="card-btn btn-delete" id="${projectId}">
                   <img src="res/images/delete.png">
                 </button>
                 
@@ -172,7 +172,10 @@ monitorAuthState(async (user) => {
     deleteButtons.forEach(button => {
       button.addEventListener("click", function () {
         console.log("Delete button clicked!");
-        // 
+        const projectRef = doc(db, "users", user.uid, "Projects", button.id);
+        deleteDoc(projectRef);
+        console.log(`Project ${button.id} deleted successfully.`);
+        div.querySelector(`#${button.id}`).remove();
       });
     });
   } else {
@@ -180,7 +183,5 @@ monitorAuthState(async (user) => {
   }
 });
 
-
-
 import { auth, db } from "./firebase/firebase-config.js";
-import { doc, collection, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+import { doc, collection, setDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
