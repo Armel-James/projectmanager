@@ -1,12 +1,10 @@
 import { signOutUser, monitorAuthState } from "../scripts/firebase/auth.js";
 
-// const projectModalCancel = document.getElementById("projectModalCancel")
-//projectModalCancel.addEventListener("click", )
-
+// Sign out func
 const signOutButton = document.getElementById("sign-out-btn")
-
 signOutButton.addEventListener("click", signOutUser)
 
+// user sign in validator
 monitorAuthState((user) => {
   if (user) {
     document.getElementById("user-name").textContent = user.displayName;
@@ -15,62 +13,56 @@ monitorAuthState((user) => {
     document.getElementById("profile-pic-big").src = user.photoURL
     console.log(user.displayName)
   } else {
-    // firebase.auth().signOut()
-    console.log("signed out. monAuthState")
-    window.location.href = "index.html";
+    console.log("signed out. monAuthState")// debug
+    window.location.href = "index.html";// redirect if no valid user signed in
   }
 })
 
-// ==================== new code
+// Project creator
 document.getElementById('saveProjectBtn').addEventListener('click', async function () {
-  // Validate form
   const form = document.getElementById('projectForm');
 
-  //==================EXPERIMENTAL (replacement for nexxt code block below)
-
-  monitorAuthState((user) => {
+  monitorAuthState(async (user) => {
     if (user) {
       if (form.checkValidity()) {
-        // Gather form data
         const projectName = document.getElementById('projectName').value;
         const description = document.getElementById('description').value;
         const startDate = document.getElementById('startDate').value;
         const endDate = document.getElementById('endDate').value;
 
-        // Reference to the user's document
         const userRef = doc(db, "users", auth.currentUser.uid);
 
-        console.log(auth.currentUser.uid);
-        // Reference to the 'Projects' subcollection
+        // console.log(auth.currentUser.uid);
         const projectsRef = collection(userRef, "Projects");
-        // Data for a new project
         const newProject = {
           projectName,
           description,
           startDate,
-          endDate,
-          // Additional project fields
+          endDate
         };
-        setDoc(doc(projectsRef), newProject, { merge: true }).then(() => {
-          // Refresh the page after the Firebase write operation is successful
-          location.reload();
+
+
+        const dref = setDoc(doc(projectsRef), newProject, { merge: true })
+        .then(() => {
+          // document.getElementById("projectsContainer").replaceChildren(ProjectDisplay(user));
+          document.getElementById("projectsContainer").innerHTML = "";
+          ProjectDisplay(user);
+          // location.reload();
+          // renderProjectCard(newProject);
         })
-          .catch((error) => {
-            // Handle any errors that occur during the write operation
-            console.error("Error writing document: ", error);
+        .catch((error) => {
+            console.error("Error writing document: ", error);// debug
           });
 
-        // Output form data to console (replace this with your desired functionality)
-        console.log('Project Name:', projectName);
-        console.log('Description:', description);
-        console.log('Start Date:', startDate);
-        console.log('End Date:', endDate);
+        console.log('Project Name:', projectName);// debug
+        console.log('Description:', description);// debug
+        console.log('Start Date:', startDate);//debug
+        console.log('End Date:', endDate);//debug
 
         // Close modal
         const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
-        // projectModal.hide();
 
-        // Reset form
+        // clean form
         form.reset();
       } else {
         form.reportValidity();
@@ -79,50 +71,9 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
       console.log("error")
     }
   })
-
-  //==================
-  /*
-    if (form.checkValidity()) {
-      // Gather form data
-      const projectName = document.getElementById('projectName').value;
-      const description = document.getElementById('description').value;
-      const startDate = document.getElementById('startDate').value;
-      const endDate = document.getElementById('endDate').value;
-  
-      // Reference to the user's document
-      const userRef = doc(db, "users", auth.currentUser.uid);
-  
-      console.log(auth.currentUser.uid);
-      // Reference to the 'Projects' subcollection
-      const projectsRef = collection(userRef, "Projects");// maybe use setDoc()
-      // Data for a new project
-      const newProject = {
-        projectName,
-        description,
-        startDate,
-        endDate,
-        // Additional project fields
-      };
-      await setDoc(doc(projectsRef), newProject, { merge: true });
-  
-      // Output form data to console (replace this with your desired functionality)
-      console.log('Project Name:', projectName);
-      console.log('Description:', description);
-      console.log('Start Date:', startDate);
-      console.log('End Date:', endDate);
-  
-      // Close modal
-      const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
-      projectModal.hide();
-  
-      // Reset form
-      form.reset();
-    } else {
-      form.reportValidity();
-    }*/
 });
 
-
+// TEMPLATE: Render project input data
 function renderProjectCard(project) {
   const { projectId, projectName, description, startDate, endDate } = project;
   return `<div class="card mx-1 my-1" id=${projectId}>
@@ -155,9 +106,19 @@ function renderProjectCard(project) {
         </div>`;
 }
 
-
+// Project view
 monitorAuthState(async (user) => {
   if (user) {
+    ProjectDisplay(user);
+  } else {
+    console.log("User is not signed in.");// debug
+  }
+});
+
+// Proj display func
+async function ProjectDisplay(user) {
+
+    // Proj view
     const projectsContainer = document.getElementById('projectsContainer');
     const projectsRef = collection(db, "users", user.uid, "Projects");
     const querySnapshot = await getDocs(projectsRef);
@@ -174,21 +135,32 @@ monitorAuthState(async (user) => {
       };
       projectsContainer.innerHTML += renderProjectCard(formattedProject);
     });
+
+    // Delete proj func
     const deleteButtons = document.querySelectorAll(".btn-delete");
 
     deleteButtons.forEach(button => {
       button.addEventListener("click", function () {
-        console.log("Delete button clicked!");
         const projectRef = doc(db, "users", user.uid, "Projects", button.id);
+        
+        console.log("Delete button clicked!");// debug
+
         deleteDoc(projectRef);
-        console.log(`Project ${button.id} deleted successfully.`);
+
+        console.log(`Project ${button.id} deleted successfully.`);// debug
+
         div.querySelector(`#${button.id}`).remove();
       });
     });
-  } else {
-    console.log("User is not signed in.");
-  }
-});
+
+    // Open proj func
+    const openProj = document.querySelectorAll(".card-play")
+    openProj.forEach(a => {a.addEventListener("click", function () {
+      window.location.href = "views/proj/proj.html";
+      console.log(window.location.pathname);
+      console.log("working open proj func")
+    })})
+}
 
 import { auth, db } from "./firebase/firebase-config.js";
 import { doc, collection, setDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
