@@ -51,7 +51,14 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
           endDate,
           // Additional project fields
         };
-        setDoc(doc(projectsRef), newProject, { merge: true });
+        setDoc(doc(projectsRef), newProject, { merge: true }).then(() => {
+          // Refresh the page after the Firebase write operation is successful
+          location.reload();
+        })
+          .catch((error) => {
+            // Handle any errors that occur during the write operation
+            console.error("Error writing document: ", error);
+          });
 
         // Output form data to console (replace this with your desired functionality)
         console.log('Project Name:', projectName);
