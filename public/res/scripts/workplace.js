@@ -156,7 +156,7 @@ async function ProjectDisplay(user) {
     // Open proj func
     const openProj = document.querySelectorAll(".card-play")
     openProj.forEach(a => {a.addEventListener("click", function () {
-      window.location.href = "/res/views/proj/proj.html";
+      window.location.href = "proj.html";
       console.log(window.location.pathname);
       console.log("working open proj func")
     })})

@@ -7,14 +7,32 @@ window.addEventListener('load', () => {
     removeLoader(loader);
 })
 
-// TabView functionalities
+// TabView UI functionalities
 const contents = document.querySelectorAll(".content");
-contents.forEach((element) => {
-    element.addEventListener('click', () => {
+const buttons = document.querySelector(".side-navigation-btn-list").querySelectorAll("button")
 
+console.log(buttons);
+buttons.forEach((element, index) => {
+    element.addEventListener('click', (e) => {
+        toggleView(index, element);
     })
 });
 
-function toggleView() {
-    
+function toggleView(i, elem) {
+    contents.forEach((content, index) =>{
+        if (i === index && content.classList.contains("d-none")) {
+            content.classList.remove("d-none");
+        } else if (i !== index && !content.classList.contains("d.none")){
+            content.classList.add("d-none");
+        }
+    })
+
+    buttons.forEach((button) => {
+        console.log(button);
+        if (elem == button && !button.classList.contains("active-item")) {
+            button.classList.add("active-item");
+        } else if (elem != button && button.classList.contains("active-item")) {
+            button.classList.remove("active-item");
+        }
+    })
 }

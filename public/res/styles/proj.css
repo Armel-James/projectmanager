@@ -34,6 +34,10 @@ aside {
     padding: 1rem;
 }
 
+.active-item {
+    background-color: var(--grey) !important;
+}
+
 .side-navigation-btn-list {
     margin-top: 30px;
 }
@@ -56,6 +60,7 @@ aside {
     grid-template-columns: 50px auto;
     padding: 7px 5px 7px 5px;
     text-align: left;
+    font-size: rem;
 }
 
 .side-navigation-btn-list > li > button:hover {
