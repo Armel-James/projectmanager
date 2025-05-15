@@ -82,8 +82,8 @@ function renderProjectCard(project) {
               <div class="project-content">
                 <h6 class="project-title">${projectName}</h6>
                 <p class="project-description">${description}</p>
-                <p class="card-text"><small class="text-muted">Start: ${startDate}</small></p>
-                <p class="card-text"><small class="text-muted">End: ${endDate}</small></p>
+                <p class="to-hide card-text"><small class="text-muted">Start: ${startDate}</small></p>
+                <p class="to-hide card-text"><small class="text-muted">End: ${endDate}</small></p>
               </div>
               
               <div class="card-button-container">
@@ -156,7 +156,7 @@ async function ProjectDisplay(user) {
     // Open proj func
     const openProj = document.querySelectorAll(".card-play")
     openProj.forEach(a => {a.addEventListener("click", function () {
-      window.location.href = "views/proj/proj.html";
+      window.location.href = "/res/views/proj/proj.html";
       console.log(window.location.pathname);
       console.log("working open proj func")
     })})

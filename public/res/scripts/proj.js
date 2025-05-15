@@ -1,7 +1,20 @@
 import removeLoader from "../components/loader/loader.js";
 
-const loader = querySelector(".loader-container");
+// Loader
+const loader = document.querySelector(".loader-container");
 
-window.addEventListener('onLoad', () => {
+window.addEventListener('load', () => {
     removeLoader(loader);
 })
+
+// TabView functionalities
+const contents = document.querySelectorAll(".content");
+contents.forEach((element) => {
+    element.addEventListener('click', () => {
+
+    })
+});
+
+function toggleView() {
+    
+}

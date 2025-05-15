@@ -1,19 +1,136 @@
 :root {
     --primary: #284b63;
     --secondary: #5BB3B8;
-    --light: #FFFFFF;
+    --light: #f1f1f1;
     --grey: #D9D9D9;
-    --shadedprimary: #0E2F46
+    --darkgrey: #979797;
+    --shadedprimary: #0E2F46;
+    --dark: #000000;
+    --imperfectdark: #262626;
+}
+
+ul {
+    list-style-type: none;
 }
 
 body {
+    background-color: var(--light);
+}
+
+nav {
     background-color: var(--primary);
+    color: var(--light);
 }
 
-.navbar {
-    background-color: var(--shadedprimary) !important;
+main {
+    margin: 20px;
+    display: grid;
+    grid-template-rows: auto 1fr;
 }
 
-.nav-item {
-    
+aside {
+    width: 280px; 
+    height: 100%;
+    padding: 1rem;
 }
+
+.side-navigation-btn-list {
+    margin-top: 30px;
+}
+
+.selected {
+    background-color: var(--darkgrey);
+}
+
+.side-navigation-btn-list > li > button > img {
+    width: 23px;
+    height: auto;
+}
+
+.side-navigation-btn-list > li > button {
+    background-color: var(--light);
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50px auto;
+    padding: 7px 5px 7px 5px;
+    text-align: left;
+}
+
+.side-navigation-btn-list > li > button:hover {
+    background-color: var(--grey);
+}
+
+.side-navigation-btn-list > li {
+    margin: 5px 0;
+}
+
+.user-profile-box {
+    height: 45px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 15px;
+}
+
+.user-info-container {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 25px 20px;
+    padding: 5px;
+}
+
+.user-role {
+    grid-column: 2;
+    font-weight: 200;
+    font-size: small;
+}
+
+.user-name, .user-role {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 150px;
+}
+
+.share-btn {
+    height: 30px;
+    width: 40px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-image {
+    width: 40px;
+    height: 40px;
+    background-color: var(--grey);
+    border-radius: 20px;
+    border: none;
+    grid-row: 1 / span 2;
+    margin: 5px;
+}
+
+.share-image {
+    height: 20px;
+    width: 20px;
+}
+
+.back-image {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--darkgrey);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.back-link:hover {
+    background-color: var(--grey);
+}
+

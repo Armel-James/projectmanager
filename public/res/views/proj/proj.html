@@ -6,25 +6,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Project Name</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="/projectmanager/public/res/styles/workplace.css"/>
-        <link rel="stylesheet" href="/projectmanager/public/res/styles/proj.css"/>
-        <link rel="stylesheet" href="/projectmanager/public/res/components/loader/loader.css"/>
+        <link rel="stylesheet" href="/res/styles/proj.css"/>
+        <link rel="stylesheet" href="/res/styles/workplace.css"/>
+        <link rel="stylesheet" href="/res/components/loader/loader.css"/>
     </head>
     <body>
         <div class="loader-container">
             <span class="loader"></span>
         </div>
         <div class="wrapper">
-            <div class="navbar navbar-expand-lg navbar-light wrapper-item-1 border-dark-subtle">
-                <div class="container-fluid d-flex justify-content-end  ">
+            <div class="navbar navbar-expand-lg wrapper-item-1">
+                <div class="container-fluid">
+                    <a class="d-flex justify-content-center align-items-center back-link" href="#">
+                        <img src="/res/images/left-arrow.png" class="back-image" alt="back image"/>
+                        <span>Back to Projects</span>
+                    </a>
                     <div class="d-flex justify-content-end flex-row">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
-            
                             <li class="nav-item dropdown d-flex justify-content-end align-items-center w-75">
                                 <a class="nav-link d-flex justify-content-end align-items-center profile-dropdown" href="#"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img class="img-fluid img-thumbnail rounded-circle icon" alt="profile picture"
-                                        src="/projectmanager/public/res/images/notification-icon.png">
+                                        src="/res/images/notification-icon.png">
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" style="position: absolute;">
                                     <li><a class="dropdown-item" href="#"></a></li>
@@ -37,7 +40,7 @@
                                 <a class="nav-link d-flex justify-content-end align-items-center profile-dropdown" href="#"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img class="img-fluid img-thumbnail rounded-circle icon" alt="profile picture"
-                                        src="/projectmanager/public/res/images/help-icon.png">
+                                        src="/res/images/help-icon.png">
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" style="position: absolute;">
                                     <li><a class="dropdown-item" href="#"></a></li>
@@ -46,14 +49,14 @@
                                 </ul>
                             </li>
             
-                            <li class="nav-item dropdown d-flex justify-content-end align-items-center w-75">
-                                <a class="nav-link d-flex justify-content-end align-items-center profile-dropdown" href="#"
+                            <!-- <li class="nav-item dropdown d-flex justify-content-end align-items-center w-75 ">
+                                <a class="nav-link d-flex justify-content-end align-items-center profile-dropdown " href="#"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img id="profile-pic" class="img-fluid img-thumbnail rounded-circle icon" alt="profile picture">
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" style="position: absolute;">
                                     <li class="m-3 d-flex justify-content-center align-items-center flex-column">
-                                        <img id="profile-pic-big" class="img-fluid img-thumbnail rounded-circle w-50"
+                                        <img id="profile-pic-big" class="img-fluid img-thumbnail w-50"
                                             alt="profile picture">
                                         <h6 id="user-name"></h6>
                                         <p id="user-email" class="text-sm"></p>
@@ -66,15 +69,92 @@
                                     </li>
                                     <li><a class="dropdown-item" id="sign-out-btn">Sign Out</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
             </div>
+            
+            <!-- Sidebar -->
+            <aside>
+                <div class="user-profile-box">
+                    <div class="user-info-container">
+                        <img class="user-image" alt="user image"/>
+                        <span class="user-name">Nigga Evangelizaasdasdtion</span>
+                        <span class="user-role">Product Manager</span>
+                    </div>
+                    <button class="secondary-button share-btn">
+                        <img class="share-image" alt="share button image" src="/res/images/share-icon.png"/>
+                    </button>
+                </div> 
+                <ul class="side-navigation-btn-list">
+                    <li>
+                        <button>
+                            <img src="/res/images/details.png" alt="Project Details image"/>
+                            <span>Project Details</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button>
+                            <img src="/res/images/people.png"/>
+                            <span>Members</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button>
+                            <img src="/res/images/monitor.png"/>
+                            <span>Monitor</span>
+                        </button>
+                        
+                    </li>
+                    <li>Views</li>
+                    <li>
+                        <button>
+                            <img src="/res/images/task.png"/>
+                            <span>Task Management</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button>
+                            <img src="/res/images/phase.png"/>
+                            <span>Phase</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button>
+                            <img src="/res/images/Calendar.png"/>
+                            <span>Calendar</span>
+                        </button>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Main contents -->
+            <main>
+                <h3>Project galit sa bakla</h3>
+                <div id="project-details-view" class="content">
+                    project-details-view
+                </div>
+                <div id="members-view" class="content d-none">
+                    members-view
+                </div>
+                <div id="monitor-view" class="content d-none">
+                    monitor-view
+                </div>
+                <div id="task-management-view" class="content d-none">
+                    task-management-view
+                </div>
+                <div id="phase-view" class="content d-none">
+                    phase-view
+                </div>
+                <div id="calendar-view" class="content d-none">
+                    calendar-view
+                </div>
+            </main>
+            
         </div>
-        <script src="res/scripts/workplace.js"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src=""></script>
-        <script src="./public/res/scripts/proj.js"></script>
+        <script src="/res/scripts/proj.js" type="module"></script>
     </body>
 </html>
