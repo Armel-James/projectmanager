@@ -11,7 +11,8 @@ window.addEventListener('load', () => {
 const contents = document.querySelectorAll(".content");
 const buttons = document.querySelector(".side-navigation-btn-list").querySelectorAll("button")
 
-console.log(buttons);
+toggleView(0, buttons[0]);
+
 buttons.forEach((element, index) => {
     element.addEventListener('click', (e) => {
         toggleView(index, element);
