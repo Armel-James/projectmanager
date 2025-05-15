@@ -1,9 +1,8 @@
 function removeLoader(element) {
-  var loader = document.querySelector(".loader-container");
     setTimeout(function() {
-      loader.style.transition = '.5s';
-      loader.style.opacity = '0';
-      loader.style.visibility = 'hidden';
+      element.style.transition = '.5s';
+      element.style.opacity = '0';
+      element.style.visibility = 'hidden';
     }, 1000);
 }
 
