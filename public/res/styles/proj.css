@@ -7,6 +7,15 @@
     --shadedprimary: #0E2F46;
     --dark: #000000;
     --imperfectdark: #262626;
+    --primary-shaded: #1c3f57;
+    --green: #49A949;
+    --red: #FF3838;
+
+    --prio-5:#F48586;
+    --prio-4:#FBC77E;
+    --prio-3:#93EF99;
+    --prio-2:#93E1EF;
+    --prio-1:#93A2EF;
 }
 
 ul {
@@ -139,3 +148,312 @@ aside {
     background-color: var(--grey);
 }
 
+#task-management-view {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+
+.phase-switcher-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.phase-switcher-container > div {
+    width: auto;
+}
+
+.phase-switcher-container button {
+    background-color: var(--light);
+    border: none;
+    border-radius: 5px;
+    display: grid;
+}
+
+.previous-phase {
+    grid-template-columns: 30px auto;
+}
+
+.next-phase {
+    grid-template-columns: auto 30px;
+}
+
+.previous-phase svg {
+    margin: auto;
+}
+
+.next-phase svg {
+    margin: auto;
+}
+
+.phase-switcher-container button:hover div {
+    color: var(--secondary);
+}
+
+.arrow {
+    color: var(--darkgrey);
+    height: 25px;
+    width: auto;
+}
+
+.phase-indicator {
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.left {
+    justify-content: left;
+    align-items: start;
+}
+
+.right {
+    justify-content: right;
+    align-items: end;
+}
+
+.sm-text {
+    font-size: small;
+}
+
+.text-thin {
+    font-weight: 300;
+}
+
+.clr-grey {
+    color: var(--darkgrey);
+}
+
+.text-bold-600 {
+    font-weight: 600;
+}
+
+.right-arrow {
+    transform: rotate(180deg);
+}
+
+.plus-vector {
+    height: 25px;
+    width: auto;
+}
+
+.phase-switcher-container button:hover svg{
+    color: var(--secondary);
+}
+
+/* Dynamic Tabs on Task Management */
+
+.add-tab-button {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background-color: var(--light);
+    border-radius: 5px;
+}
+
+.add-tab-button:hover {
+    color: var(--light);
+    background-color: var(--primary);
+}
+
+.dynamic-tab-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.dynamic-tab-section .add-tab-button {
+    margin-right: 20px;
+}
+
+.dynamic-tab-button {
+    margin: 5px 5px;
+    padding: 3px 10px;
+    border: none;
+    border-bottom: 2px solid var(--darkgrey);
+    min-width: 70px;
+    width: auto;
+    max-width: 200px;
+    color: var(--imperfectdark);
+    font-size: 0.9rem;
+}
+
+.dynamic-tab-container button:hover {
+    background-color: var(--grey);
+}
+
+.dynamic-tab-active {
+    border-bottom: 2px solid var(--primary);
+}
+
+/* Kanban related styles */
+
+.kanban-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+    margin: 20px 7%;
+    justify-content: space-between;
+}
+
+.kanban-col {
+    width: 300px;
+}
+
+.col-category {
+    border: 1px solid var(--darkgrey);
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.col-category button {
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+.col-category button:hover .col-more {
+    background-color: var(--grey);
+    color: var(--imperfectdark);
+}
+
+.col-more {
+    height: 30;
+    width: 30px;
+    color: var(--darkgrey);
+    border-radius: 5px;
+}
+
+.new-task-button {
+    background-color: var(--primary);
+    color: var(--light);
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    margin: 10px 0px;
+    font-size: 0.9rem;
+}
+
+.new-task-button:hover {
+    background-color: var(--primary-shaded);
+}
+
+.kanban-card-container {
+    margin-top: 10px;
+    max-height: 100%;
+}
+
+.kanban-card {
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+    padding: 5px 10px 10px 10px;
+    margin: 5px 0px;
+    cursor: pointer;
+}
+
+.kanban-card:hover {
+    border-top: 1px solid var(--imperfectdark);
+    border-right: 1px solid var(--imperfectdark);
+    border-bottom: 1px solid var(--imperfectdark);
+}
+
+.circle-notif-container {
+    height: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.circle {
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    position: relative;
+    margin-right: -5px;
+}
+
+.circle-active {
+    background-color: var(--red);
+}
+
+.kanban-card-title {
+    width: 100%;              
+    height: 3em;            
+    line-height: 1.5em;        
+    overflow: hidden;          
+    display: -webkit-box;     
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis; 
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.kanban-card-progress {
+    margin-top: 10px;
+    font-size: small;
+    color: var(--imperfectdark);
+    padding: 0 3px;
+}
+
+.progress-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: var(--grey);
+    height: 7px;
+    border-radius: 3px;
+}
+
+.progress-line {
+    background-color: var(--green);
+    border-radius: 3px 0 0 3px;
+    height: 100%;
+    width: 50%;
+}
+
+.progress-completed {
+    border-radius: 3px;
+}
+
+.card-priority-5 {
+    border-left: 5px solid var(--prio-5);
+}
+
+.card-priority-4 {
+    border-left: 5px solid var(--prio-4);
+}
+
+.card-priority-3 {
+    border-left: 5px solid var(--prio-3);
+}
+
+.card-priority-2 {
+    border-left: 5px solid var(--prio-2);
+}
+
+.card-priority-1 {
+    border-left: 5px solid var(--prio-1);
+}

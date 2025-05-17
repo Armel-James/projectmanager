@@ -110,14 +110,14 @@
                     <li>Views</li>
                     <li>
                         <button id="details-tab-toggler">
-                            <img src="/res/images/task.png"/>
-                            <span>Task Management</span>
+                            <img src="/res/images/phase.png"/>
+                            <span>Phase</span>
                         </button>
                     </li>
                     <li>
                         <button id="details-tab-toggler">
-                            <img src="/res/images/phase.png"/>
-                            <span>Phase</span>
+                            <img src="/res/images/task.png"/>
+                            <span>Task Management</span>
                         </button>
                     </li>
                     <li>
@@ -128,15 +128,10 @@
                     </li>
                 </ul>
             </aside>
-
-
-
-
-
             
             <!-- Main contents -->
             <main>
-                <h3>Project galit sa bakla</h3>
+                <h3 class="clr-primary">Project galit sa baklaa</h3>
                 <div id="project-details-view" class="content">
                     project-details-view
                 </div>
@@ -146,11 +141,117 @@
                 <div id="monitor-view" class="content d-none">
                     monitor-view
                 </div>
-                <div id="task-management-view" class="content d-none">
-                    task-management-view
-                </div>
                 <div id="phase-view" class="content d-none">
                     phase-view
+                </div>
+
+                <!-- Task Management -->
+                <div id="task-management-view" class="content d-none">
+                    <div class="phase-switcher-container">
+                        <button class="previous-phase">
+                            <svg fill="currentColor" class="arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                viewBox="0 0 330 330" xml:space="preserve">
+                                <path id="XMLID_92_" d="M111.213,165.004L250.607,25.607c5.858-5.858,5.858-15.355,0-21.213c-5.858-5.858-15.355-5.858-21.213,0.001
+                                    l-150,150.004C76.58,157.211,75,161.026,75,165.004c0,3.979,1.581,7.794,4.394,10.607l150,149.996
+                                    C232.322,328.536,236.161,330,240,330s7.678-1.464,10.607-4.394c5.858-5.858,5.858-15.355,0-21.213L111.213,165.004z"/>
+                            </svg>
+                            <span class="phase-indicator left">
+                                <div class="clr-grey text-bold-600">Requirements</div>
+                                <div class="sm-text clr-grey text-thin"><span>3d</span> ago</div>
+                            </span>
+                        </button>
+                        <div class="phase-indicator center">
+                            <div class="clr-primary text-bold-600">Current Phase: Design</div>
+                            <div class="sm-text clr-grey text-thin"><span>27d</span> left</div>
+                        </div>
+                        <button class="next-phase">
+                            <span class="phase-indicator right">
+                                <div class="clr-grey text-bold-600">Implementation</div>
+                                <div class="sm-text clr-grey text-thin">Starts on <span>May 27, 2025</span></div>
+                            </span>
+                            <svg fill="currentColor" class="arrow right-arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                viewBox="0 0 330 330" xml:space="preserve">
+                                <path id="XMLID_92_" d="M111.213,165.004L250.607,25.607c5.858-5.858,5.858-15.355,0-21.213c-5.858-5.858-15.355-5.858-21.213,0.001
+                                    l-150,150.004C76.58,157.211,75,161.026,75,165.004c0,3.979,1.581,7.794,4.394,10.607l150,149.996
+                                    C232.322,328.536,236.161,330,240,330s7.678-1.464,10.607-4.394c5.858-5.858,5.858-15.355,0-21.213L111.213,165.004z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="dynamic-tab-section">
+                        <button class="add-tab-button">
+                            <svg class="plus-vector" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g data-name="add" id="add-2"><g><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19" y2="5"/><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12"/></g></g></g></svg>
+                        </button>
+                        <div class="dynamic-tab-container">
+                            <!-- Sample Buttons -->
+                            <button class="dynamic-tab-button dynamic-tab-active">Logistics</button>
+                            <button class="dynamic-tab-button">Finance</button>
+                            <button class="dynamic-tab-button">Marketing</button>
+                            <button class="dynamic-tab-button">Law</button>
+                            <button class="dynamic-tab-button">Health</button>
+                            <button class="dynamic-tab-button">Operations</button>
+                            <button class="dynamic-tab-button">Recruitment</button>
+                            <button class="dynamic-tab-button">Lorem</button>
+                            <button class="dynamic-tab-button">Ipsum</button>
+                        </div>
+                    </div>
+                    <div class="kanban-container">
+                        <div class="kanban-col" id="pending-col">
+                            <div class="col-category">
+                                <div>Pending</div>
+                                <button>
+                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
+                                </button>
+                            </div>
+                            <div class="card-container"></div>
+                            <button class="new-task-button">Add New Task</button>
+                        </div>
+                        <div class="kanban-col" id="in-progress-col">
+                            <div class="col-category">
+                                <div>In Progress</div>
+                                <button>
+                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
+                                </button>
+                            </div>
+                            <div class="card-container"></div>
+                            <button class="new-task-button">Add New Task</button>
+                        </div>
+                        <div class="kanban-col" id="completed-col">
+                            <div class="col-category">
+                                <div>Completed</div>
+                                <button>
+                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
+                                </button>
+                            </div>
+                            <div class="card-container"></div>
+                            <button class="new-task-button">Add New Task</button>
+                        </div>
+                        <div class="kanban-col" id="failed-col">
+                            <div class="col-category">
+                                <div>Failed</div>
+                                <button>
+                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
+                                </button>
+                            </div>
+                            <div class="kanban-card-container">
+                                <!-- Kanban card template ## DO NOT DELETE ## -->
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                    <div class="kanban-card-title">Eat junk foods and look at women all day while sitting at the top of gtr with friends and lorem ipsum</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">50%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line"></div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <button class="new-task-button">Add New Task</button>
+                        </div>
+                    </div>
                 </div>
                 <div id="calendar-view" class="content d-none">
                     calendar-view

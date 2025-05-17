@@ -102,7 +102,7 @@ grid-row: 2;
 }
 
 .clr-primary {
-  color: #5699ff;
+  color: var(--primary);
 }
 
 .active {
@@ -116,10 +116,6 @@ grid-row: 2;
 }
 
 /* Vertical Overflow styling */
-.overflow-height {
-  
-}
-
 .btn-primary {
   background-color: #3D86D9 !important;
 }
