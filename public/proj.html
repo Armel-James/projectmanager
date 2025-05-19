@@ -80,7 +80,7 @@
                 <div class="user-profile-box">
                     <div class="user-info-container">
                         <img class="user-image" alt="user image"/>
-                        <span class="user-name">Nigga Evangelizaasdasdtion</span>
+                        <span class="user-name">User Name</span>
                         <span class="user-role">Product Manager</span>
                     </div>
                     <button class="secondary-button share-btn">
@@ -131,7 +131,7 @@
             
             <!-- Main contents -->
             <main>
-                <h3 class="clr-primary">Project galit sa baklaa</h3>
+                <h3 class="clr-primary">Project Name</h3>
                 <div id="project-details-view" class="content">
                     project-details-view
                 </div>
@@ -194,10 +194,10 @@
                             <button class="dynamic-tab-button">Ipsum</button>
                         </div>
                     </div>
-                    <div class="kanban-container">
+                    <div class="kanban-container  overflow-y-auto d-flex  ">
                         <div class="kanban-col" id="pending-col">
                             <div class="col-category">
-                                <div>Pending</div>
+                                <div id="phaseLabel">Pending</div>
                                 <button>
                                     <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
                                 </button>
@@ -207,7 +207,7 @@
                         </div>
                         <div class="kanban-col" id="in-progress-col">
                             <div class="col-category">
-                                <div>In Progress</div>
+                                <div id="phaseLabel">In Progress</div>
                                 <button>
                                     <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
                                 </button>
@@ -217,7 +217,7 @@
                         </div>
                         <div class="kanban-col" id="completed-col">
                             <div class="col-category">
-                                <div>Completed</div>
+                                <div id="phaseLabel">Completed</div>
                                 <button>
                                     <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
                                 </button>
@@ -227,7 +227,7 @@
                         </div>
                         <div class="kanban-col" id="failed-col">
                             <div class="col-category">
-                                <div>Failed</div>
+                                <div id="phaseLabel">Failed</div>
                                 <button>
                                     <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
                                 </button>
@@ -236,11 +236,50 @@
                                 <!-- Kanban card template ## DO NOT DELETE ## -->
                                 <div class="kanban-card card-priority-5">
                                     <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">Eat junk foods and look at women all day while sitting at the top of gtr with friends and lorem ipsum</div>
+                                    <div class="kanban-card-title">lorem ipsum</div>
                                     <div class="kanban-card-progress">
                                         <div class="progress-title">
                                             <span>Progress:</span>
-                                            <span class="text-bold-600">50%</span>
+                                            <span class="text-bold-600">10%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                    <div class="kanban-card-title">lorem ipsum</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">20%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                    <div class="kanban-card-title">lorem ipsum</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">30%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                    <div class="kanban-card-title">lorem ipsum</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">40%</span>
                                         </div>
                                         <div class="progress-container">
                                             <div class="progress-line"></div>
@@ -266,46 +305,7 @@
                                     <div class="kanban-card-progress">
                                         <div class="progress-title">
                                             <span>Progress:</span>
-                                            <span class="text-bold-600">50%</span>
-                                        </div>
-                                        <div class="progress-container">
-                                            <div class="progress-line"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-card card-priority-5">
-                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">Eat junk foods and look at women all day while sitting at the top of gtr with friends and lorem ipsum</div>
-                                    <div class="kanban-card-progress">
-                                        <div class="progress-title">
-                                            <span>Progress:</span>
-                                            <span class="text-bold-600">50%</span>
-                                        </div>
-                                        <div class="progress-container">
-                                            <div class="progress-line"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-card card-priority-5">
-                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">Eat junk foods and look at women all day while sitting at the top of gtr with friends and lorem ipsum</div>
-                                    <div class="kanban-card-progress">
-                                        <div class="progress-title">
-                                            <span>Progress:</span>
-                                            <span class="text-bold-600">50%</span>
-                                        </div>
-                                        <div class="progress-container">
-                                            <div class="progress-line"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-card card-priority-5">
-                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">Eat junk foods and look at women all day while sitting at the top of gtr with friends and lorem ipsum</div>
-                                    <div class="kanban-card-progress">
-                                        <div class="progress-title">
-                                            <span>Progress:</span>
-                                            <span class="text-bold-600">50%</span>
+                                            <span class="text-bold-600">60%</span>
                                         </div>
                                         <div class="progress-container">
                                             <div class="progress-line"></div>
@@ -323,6 +323,38 @@
             </main>
             
         </div>
+<!-- EditPhase Modal -->
+        <div id="actionModal" class="custom-modal">
+            <div class="btn-close-wrapper">
+                <button class="btn-close" id="actionClose"></button>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" id="editBtn">Edit</button>
+                <button class="btn btn-danger" id="deleteBtn">Delete</button>
+            </div>
+        </div>
+        
+        <!-- Confirm/Delete Modal -->
+        <div id="confirmModal" class="custom-modal">
+            <div class="btn-close-wrapper">
+                <button class="btn-close" id="confirmClose"></button>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-danger" id="confirmDeleteBtn">Confirm Delete</button>
+            </div>
+        </div>
+        
+        <!-- Edit Modal -->
+        <div id="editModal" class="custom-modal">
+            <div class="btn-close-wrapper">
+                <button class="btn-close" id="editClose"></button>
+            </div>
+            <div class="modal-buttons">
+                <input type="text" class="form-control" id="editInput">
+                <button class="btn btn-success" id="editConfirmBtn">Confirm</button>
+            </div>
+        </div>
+<!-- =================================================== -->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="/res/scripts/proj.js" type="module"></script>

@@ -45,8 +45,8 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
         const dref = setDoc(doc(projectsRef), newProject, { merge: true })
         .then(() => {
           // document.getElementById("projectsContainer").replaceChildren(ProjectDisplay(user));
-          document.getElementById("projectsContainer").innerHTML = "";
-          ProjectDisplay(user);
+          // document.getElementById("projectsContainer").innerHTML = "";
+          // ProjectDisplay(user);
           // location.reload();
           // renderProjectCard(newProject);
         })
@@ -74,8 +74,8 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
 });
 
 // TEMPLATE: Render project input data
-function renderProjectCard(project) {
-  const { projectId, projectName, description, startDate, endDate } = project;
+function renderProjectCard(projectId, project) {
+  const { projectName, description, startDate, endDate } = project;
   return `<div class="card mx-1 my-1" id=${projectId}>
           <div class="card-body project-card-content">
             <div class="card-title">
@@ -109,32 +109,32 @@ function renderProjectCard(project) {
 // Project view
 monitorAuthState(async (user) => {
   if (user) {
-    ProjectDisplay(user);
+    // ProjectDisplay(user);
   } else {
     console.log("User is not signed in.");// debug
   }
 });
 
 // Proj display func
-async function ProjectDisplay(user) {
+async function ProjectDisplay(user, id, formattedProject) {
 
     // Proj view
     const projectsContainer = document.getElementById('projectsContainer');
     const projectsRef = collection(db, "users", user.uid, "Projects");
     const querySnapshot = await getDocs(projectsRef);
 
-    querySnapshot.forEach((doc) => {
-      const projectId = doc.id;
-      const projectData = doc.data();
-      const formattedProject = {
-        projectId: projectId,
-        projectName: projectData.projectName,
-        description: projectData.description,
-        startDate: projectData.startDate,
-        endDate: projectData.endDate
-      };
-      projectsContainer.innerHTML += renderProjectCard(formattedProject);
-    });
+    // querySnapshot.forEach((doc) => {
+    //   const projectId = doc.id;
+    //   const projectData = doc.data();
+    //   const formattedProject = {
+    //     projectId: projectId,
+    //     projectName: projectData.projectName,
+    //     description: projectData.description,
+    //     startDate: projectData.startDate,
+    //     endDate: projectData.endDate
+    //   };
+      projectsContainer.innerHTML += renderProjectCard(id, formattedProject);
+    /*}*/;
 
     // Delete proj func
     const deleteButtons = document.querySelectorAll(".btn-delete");
@@ -149,7 +149,7 @@ async function ProjectDisplay(user) {
 
         console.log(`Project ${button.id} deleted successfully.`);// debug
 
-        div.querySelector(`#${button.id}`).remove();
+        div.getElementById(`${button.id}`).remove();
       });
     });
 
@@ -162,5 +162,48 @@ async function ProjectDisplay(user) {
     })})
 }
 
+// ================ Real-time ==================
+// Reference to collection
+monitorAuthState(async (user) => {
+  
+const colRef = collection(db, "users", user.uid, "Projects");
+const listElement = document.getElementById("projectsContainer");
+
+// Real-time listener using onSnapshot and .docChanges()
+onSnapshot(colRef, (querySnapshot) => {
+  querySnapshot.docChanges().forEach((change) => {
+    const docId = change.doc.id;
+    const data = change.doc.data();
+
+    // Create a DOM element ID based on document ID (to avoid duplicates)
+    const listItemId = `doc-${docId}`;
+
+    if (change.type === "added") {
+      // Add new item to the DOM
+      // const li = document.createElement("li");
+      // li.id = listItemId;
+      // li.textContent = `ADDED: ${docId} - ${JSON.stringify(data)}`;
+      console.log(`ADDED: ${docId} - ${JSON.stringify(data)}`)
+      // listElement.appendChild();
+      ProjectDisplay(user, docId, data);
+    }
+
+    if (change.type === "modified") {
+      // Update the existing DOM item
+      const li = document.getElementById(docId);
+      if (li) li.textContent = `MODIFIED: ${docId} - ${JSON.stringify(data)}`;
+    }
+
+    if (change.type === "deleted") {
+      // Remove item from the DOM
+      const li = div.getElementById(docId);
+      console.log(li)
+      if (li) li.remove();
+    }
+  });
+});
+})
+// =============================================
+
 import { auth, db } from "./firebase/firebase-config.js";
-import { doc, collection, setDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+import { doc, collection, onSnapshot, setDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
