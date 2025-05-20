@@ -177,6 +177,7 @@ function handleAddNewTask(element) {
         console.log(element);
         const modalWrapper = document.getElementById('newTaskModalWrapper')
         modalWrapper.style.display = 'flex';
+        modalWrapper.querySelector('.modal-columnName').textContent = cardContainer.parentElement.querySelector('#phaseLabel').textContent;
         
         // replace button w/ new one
         const addButton = modalWrapper.querySelector('.confirm-btn');

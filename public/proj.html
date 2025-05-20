@@ -378,6 +378,20 @@
         <div class="modal-wrapper" id="newTaskModalWrapper">
             <div id="newTaskModal" class="my-modal">
                 <div class="my-modal-top">
+                    <div class="my-modal-title">Add to <span class="modal-columnName"></span></div>
+                    <button class="btn-close" id="newTaskClose"></button>
+                </div>
+                <div class="my-modal-content">
+                    <input type="text" placeholder="New Task title" class="new-task-title"/>
+                </div>
+                <button class="confirm-btn">Create New</button>
+            </div>
+        </div>
+
+        <!-- Edit Task Modal -->
+         <div class="modal-wrapper" id="editTaskModalWrapper">
+            <div id="editTaskModal" class="my-modal">
+                <div class="my-modal-top">
                     <div class="my-modal-title">Add to <span id="modal-columnName">{columName}</span></div>
                     <button class="btn-close" id="newTaskClose"></button>
                 </div>
