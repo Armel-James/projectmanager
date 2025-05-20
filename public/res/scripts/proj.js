@@ -41,19 +41,29 @@ function toggleView(i, elem) {
 // Add phase
 const addPhase = document.querySelector(".add-tab-button");
 addPhase.addEventListener('click', () => {
-    document.querySelector(".kanban-container").innerHTML += renderNewPhase();
+    const kanbanCont = document.querySelector(".kanban-container")
+    kanbanCont.insertAdjacentHTML('beforeend', renderNewPhase())
+    // Add click event to new phase
+    const btn = kanbanCont.lastChild.querySelector('.col-category').querySelector('button');
+    console.log(btn);
+    btn.addEventListener('click', () => {
+        showActionModal(btn)
+    });
+
+    //document.querySelector(".kanban-container").innerHTML += renderNewPhase();
 })
+
 function renderNewPhase() {
     return `<div class="kanban-col" id="pending-col">
-                            <div class="col-category">
-                                <div id="phaseLabel">Pending</div>
-                                <button>
-                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
-                                </button>
-                            </div>
-                            <div class="card-container"></div>
-                            <button class="new-task-button">Add New Task</button>
-                        </div>`;
+                <div class="col-category">
+                    <div id="phaseLabel">Pending</div>
+                    <button>
+                        <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
+                    </button>
+                </div>
+                <div class="card-container"></div>
+                <button class="new-task-button">Add New Task</button>
+            </div>`;
 }
 
 // Edit phase
@@ -61,18 +71,14 @@ const editPhase = document.querySelectorAll(".kanban-col").forEach((div) => {
     const coldiv = div.id;
     const btndiv = div.querySelector('button')
     // const btnname = btndiv.setAttribute('id', `${coldiv}`)
-    console.log(coldiv)
-    console.log(`button of ${btndiv.parentElement.parentElement.id}`)
+    // console.log(coldiv)
+    // console.log(`button of ${btndiv.parentElement.parentElement.id}`)
     div.querySelector("button").addEventListener('click', () => {
         console.log(`button of ${coldiv}`)
         // btndiv
         showActionModal(btndiv)
     })
 })
-
-// editPhase.addEventListener('click', () => {
-//     console.log("dftyuio")
-// })
 
 
 // Edit Phase Modal options
@@ -131,7 +137,7 @@ document.getElementById('editBtn').addEventListener('click', function () {
     hideAllModals();
     if (editTarget !== null) {
         var input = document.getElementById('editInput');
-        input.value = editTarget.textContent;
+        // input.value = editTarget.textContent;
         positionModal(document.getElementById('editModal'), editTarget);
     }
 });
