@@ -215,124 +215,285 @@
                     <div class="kanban-container overflow-y-auto d-flex  ">
                         <div class="kanban-col" id="pending-col">
                             <div class="col-category">
-                                <div id="phaseLabel">Pending</div>
+                                <div id="phaseLabel">Requirements</div>
                                 <button>
-                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
+                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"></circle>
+                                        <circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"></circle>
+                                        <circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"></circle>
+                                    </svg>
                                 </button>
                             </div>
-                            <div class="kanban-card-container"></div>
+                            <div class="kanban-card-container">
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container">
+                                        <div class="circle circle-active"></div>
+                                    </div>
+                                    <div class="kanban-card-title">Event Details</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">0%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line progress-0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container">
+                                        <div class="circle circle-active"></div>
+                                    </div>
+                                    <div class="kanban-card-title">Participants</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">0%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line progress-0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container">
+                                        <div class="circle circle-active"></div>
+                                    </div>
+                                    <div class="kanban-card-title">Sections</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">0%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line progress-0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <button class="new-task-button">Add New Task</button>
                         </div>
                         <div class="kanban-col" id="in-progress-col">
                             <div class="col-category">
-                                <div id="phaseLabel">In Progress</div>
+                                <div id="phaseLabel">Planning</div>
                                 <button>
-                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
+                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"></circle>
+                                        <circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"></circle>
+                                        <circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"></circle>
+                                    </svg>
                                 </button>
                             </div>
-                            <div class="kanban-card-container"></div>
+                            <div class="kanban-card-container">
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container">
+                                        <div class="circle circle-active"></div>
+                                    </div>
+                                    <div class="kanban-card-title">Program Sequence</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">0%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line progress-0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container">
+                                        <div class="circle circle-active"></div>
+                                    </div>
+                                    <div class="kanban-card-title">Venue Planning</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">0%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line progress-0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <button class="new-task-button">Add New Task</button>
                         </div>
                         <div class="kanban-col" id="completed-col">
                             <div class="col-category">
-                                <div id="phaseLabel">Completed</div>
+                                <div id="phaseLabel">Implementation</div>
                                 <button>
-                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
+                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"></circle>
+                                        <circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"></circle>
+                                        <circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"></circle>
+                                    </svg>
                                 </button>
                             </div>
-                            <div class="kanban-card-container"></div>
+                            <div class="kanban-card-container">
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container">
+                                        <div class="circle circle-active"></div>
+                                    </div>
+                                    <div class="kanban-card-title">Event Resources</div>
+                                    <div class="kanban-card-progress">
+                                        <div class="progress-title">
+                                            <span>Progress:</span>
+                                            <span class="text-bold-600">0%</span>
+                                        </div>
+                                        <div class="progress-container">
+                                            <div class="progress-line progress-0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <button class="new-task-button">Add New Task</button>
                         </div>
                         <div class="kanban-col" id="failed-col">
                             <div class="col-category">
-                                <div id="phaseLabel">Failed</div>
+                                <div id="phaseLabel">Execution</div>
                                 <button>
-                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
+                                    <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"></circle>
+                                        <circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"></circle>
+                                        <circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"></circle>
+                                    </svg>
                                 </button>
                             </div>
                             <div class="kanban-card-container">
                                 <!-- Kanban card template ## DO NOT DELETE ## -->
                                 <!-- <div class="kanban-card card-priority-5">
-                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">lorem ipsum</div>
+                                                            <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                                            <div class="kanban-card-title">lorem ipsum</div>
+                                                            <div class="kanban-card-progress">
+                                                                <div class="progress-title">
+                                                                    <span>Progress:</span>
+                                                                    <span class="text-bold-600">10%</span>
+                                                                </div>
+                                                                <div class="progress-container">
+                                                                    <div class="progress-line progress-10"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="kanban-card card-priority-5">
+                                                            <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                                            <div class="kanban-card-title">lorem ipsum</div>
+                                                            <div class="kanban-card-progress">
+                                                                <div class="progress-title">
+                                                                    <span>Progress:</span>
+                                                                    <span class="text-bold-600">20%</span>
+                                                                </div>
+                                                                <div class="progress-container">
+                                                                    <div class="progress-line progress-20"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="kanban-card card-priority-5">
+                                                            <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                                            <div class="kanban-card-title">lorem ipsum</div>
+                                                            <div class="kanban-card-progress">
+                                                                <div class="progress-title">
+                                                                    <span>Progress:</span>
+                                                                    <span class="text-bold-600">30%</span>
+                                                                </div>
+                                                                <div class="progress-container">
+                                                                    <div class="progress-line progress-30"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="kanban-card card-priority-5">
+                                                            <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                                            <div class="kanban-card-title">lorem ipsum</div>
+                                                            <div class="kanban-card-progress">
+                                                                <div class="progress-title">
+                                                                    <span>Progress:</span>
+                                                                    <span class="text-bold-600">40%</span>
+                                                                </div>
+                                                                <div class="progress-container">
+                                                                    <div class="progress-line progress-40"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="kanban-card card-priority-5">
+                                                            <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                                            <div class="kanban-card-title">Eat junk foods and look at women all day while sitting at the top of gtr with friends and lorem ipsum</div>
+                                                            <div class="kanban-card-progress">
+                                                                <div class="progress-title">
+                                                                    <span>Progress:</span>
+                                                                    <span class="text-bold-600">50%</span>
+                                                                </div>
+                                                                <div class="progress-container">
+                                                                    <div class="progress-line progress-50"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="kanban-card card-priority-5">
+                                                            <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+                                                            <div class="kanban-card-title">Eat junk foods and look at women all day while sitting at the top of gtr with friends and lorem ipsum</div>
+                                                            <div class="kanban-card-progress">
+                                                                <div class="progress-title">
+                                                                    <span>Progress:</span>
+                                                                    <span class="text-bold-600">60%</span>
+                                                                </div>
+                                                                <div class="progress-container">
+                                                                    <div class="progress-line progress-60"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                        
+                                <div class="kanban-card card-priority-5">
+                                    <div class="circle-notif-container">
+                                        <div class="circle circle-active"></div>
+                                    </div>
+                                    <div class="kanban-card-title">Invocation Time</div>
                                     <div class="kanban-card-progress">
                                         <div class="progress-title">
                                             <span>Progress:</span>
-                                            <span class="text-bold-600">10%</span>
+                                            <span class="text-bold-600">0%</span>
                                         </div>
                                         <div class="progress-container">
-                                            <div class="progress-line progress-10"></div>
+                                            <div class="progress-line progress-0"></div>
                                         </div>
                                     </div>
                                 </div>
+                        
                                 <div class="kanban-card card-priority-5">
-                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">lorem ipsum</div>
+                                    <div class="circle-notif-container">
+                                        <div class="circle circle-active"></div>
+                                    </div>
+                                    <div class="kanban-card-title">National anthem</div>
                                     <div class="kanban-card-progress">
                                         <div class="progress-title">
                                             <span>Progress:</span>
-                                            <span class="text-bold-600">20%</span>
+                                            <span class="text-bold-600">0%</span>
                                         </div>
                                         <div class="progress-container">
-                                            <div class="progress-line progress-20"></div>
+                                            <div class="progress-line progress-0"></div>
                                         </div>
                                     </div>
                                 </div>
+                        
                                 <div class="kanban-card card-priority-5">
-                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">lorem ipsum</div>
+                                    <div class="circle-notif-container">
+                                        <div class="circle circle-active"></div>
+                                    </div>
+                                    <div class="kanban-card-title">Opening Remarks</div>
                                     <div class="kanban-card-progress">
                                         <div class="progress-title">
                                             <span>Progress:</span>
-                                            <span class="text-bold-600">30%</span>
+                                            <span class="text-bold-600">0%</span>
                                         </div>
                                         <div class="progress-container">
-                                            <div class="progress-line progress-30"></div>
+                                            <div class="progress-line progress-0"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="kanban-card card-priority-5">
-                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">lorem ipsum</div>
-                                    <div class="kanban-card-progress">
-                                        <div class="progress-title">
-                                            <span>Progress:</span>
-                                            <span class="text-bold-600">40%</span>
-                                        </div>
-                                        <div class="progress-container">
-                                            <div class="progress-line progress-40"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-card card-priority-5">
-                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">Eat junk foods and look at women all day while sitting at the top of gtr with friends and lorem ipsum</div>
-                                    <div class="kanban-card-progress">
-                                        <div class="progress-title">
-                                            <span>Progress:</span>
-                                            <span class="text-bold-600">50%</span>
-                                        </div>
-                                        <div class="progress-container">
-                                            <div class="progress-line progress-50"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-card card-priority-5">
-                                    <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-                                    <div class="kanban-card-title">Eat junk foods and look at women all day while sitting at the top of gtr with friends and lorem ipsum</div>
-                                    <div class="kanban-card-progress">
-                                        <div class="progress-title">
-                                            <span>Progress:</span>
-                                            <span class="text-bold-600">60%</span>
-                                        </div>
-                                        <div class="progress-container">
-                                            <div class="progress-line progress-60"></div>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                             <button class="new-task-button">Add New Task</button>
                         </div>
+                    </div>
                     </div>
                 </div>
                 <div id="calendar-view" class="content d-none">
@@ -391,14 +552,107 @@
         <!-- Edit Task Modal -->
          <div class="modal-wrapper" id="editTaskModalWrapper">
             <div id="editTaskModal" class="my-modal">
-                <div class="my-modal-top">
-                    <div class="my-modal-title">Add to <span id="modal-columnName">{columName}</span></div>
-                    <button class="btn-close" id="newTaskClose"></button>
+                <div class="modal-task-tag">
+                    <button>Event</button>
                 </div>
-                <div class="my-modal-content">
-                    <input type="text" placeholder="New Task title" class="new-task-title"/>
+                <div class="section my-modal-top">
+                    <div class="my-modal-title"><h5>Eat junk foods and look at women all day while sitting in gtrEat junk foods and look at women all day while sitting in gtr</h5></div>
                 </div>
-                <button class="confirm-btn">Create New</button>
+                <div class="section assignee-section">
+                    <label>Assignee/s</label>
+                    <div class="assignees-container">
+
+                        <!-- TEMPLATE -->
+                        <div class="assignee-item">
+                            <span>Product Manager</span>
+                            <button>
+                                <svg viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 21.32L21 3.32001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 3.32001L21 21.32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <button>
+                            <svg class="add-assignee-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g data-name="add" id="add-2"><g><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19" y2="5"/><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12"/></g></g></g></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="section start-end-section">
+                    <div class="task-sched">
+                        <label>Start</label>
+                        <input type="datetime-local" class="my-date-time"/>
+                    </div>
+                     <div class="task-sched">
+                        <label>End</label>
+                        <input type="datetime-local" class="my-date-time"/>
+                    </div>
+                </div>
+                <div class="section task-description-section">
+                    <label>Task Description</label>
+                    <textarea rows="5"></textarea>
+                </div>
+                <div class="section requirements-section">
+                    <div class="requirements-header">
+                        <label>Requirements</label>
+                        <div class="my-dropdown">
+                            <button class="dropbtn" id="requirements-dropdown">
+                                <span>Add</span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </button>
+                            <div id="myDropdownContent" class="my-dropdown-content">
+                                <!-- <button class="btn-close" id="close-dropdown"></button> -->
+                                <button class="dropdown-option">Counter</button>
+                                <button class="dropdown-option">Toggle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="requirements-container" id="req-container">
+                        <!-- <div class="req-toggle-type">
+                            <div class="req-desc">
+                                <input type="text" class="req-desc-input" placeholder="Requirement description here"/>
+                            </div>
+                            
+                            <div class="req-options-container">
+                                <div class="checkbox-wrapper-10">
+                                    <input class="tgl tgl-flip" id="cb6" type="checkbox" unchecked />
+                                    <label class="tgl-btn" data-tg-off="To do" data-tg-on="Done" for="cb6"></label>
+                                </div>
+                                <button class="delete-btn">
+                                    <svg viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 21.32L21 3.32001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3 3.32001L21 21.32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="req-count-type">
+                            <div class="req-desc">
+                                <input type="text" class="req-desc-input" placeholder="Type here"/>
+                            </div>
+                            
+                            <div class="req-options-container">
+                                <input type="number" placeholder="Target"/>
+                                <input type="number" placeholder="Current"/>
+                                <button class="delete-btn">
+                                    <svg viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 21.32L21 3.32001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3 3.32001L21 21.32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="modal-btn-container">
+                    <button class="btn-cancel" id="editTaskClose">Cancel</button>
+                    <button class="btn-confirm" id="editTaskDone">Done</button>
+                </div>
             </div>
         </div>
 
