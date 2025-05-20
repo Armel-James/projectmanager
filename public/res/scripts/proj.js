@@ -44,10 +44,17 @@ addPhase.addEventListener('click', () => {
     const kanbanCont = document.querySelector(".kanban-container")
     kanbanCont.insertAdjacentHTML('beforeend', renderNewPhase())
     // Add click event to new phase
-    const btn = kanbanCont.lastChild.querySelector('.col-category').querySelector('button');
-    console.log(btn);
-    btn.addEventListener('click', () => {
-        showActionModal(btn)
+    const newCol = kanbanCont.lastChild;
+    const moreBtn = newCol.querySelector('.col-category').querySelector('button');
+    const addNewTaskBtn = newCol.querySelector('.new-task-button');
+    //console.log(btn);
+    moreBtn.addEventListener('click', () => {
+        showActionModal(moreBtn)
+    });
+
+    addNewTaskBtn.addEventListener('click', () => {
+        handleAddNewTask(addNewTaskBtn);
+        console.log('event set to new task button');
     });
 
     //document.querySelector(".kanban-container").innerHTML += renderNewPhase();
@@ -61,7 +68,7 @@ function renderNewPhase() {
                         <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
                     </button>
                 </div>
-                <div class="card-container"></div>
+                <div class="kanban-card-container"></div>
                 <button class="new-task-button">Add New Task</button>
             </div>`;
 }
@@ -93,6 +100,9 @@ function hideAllModals() {
     document.getElementById('actionModal').style.display = 'none';
     document.getElementById('confirmModal').style.display = 'none';
     document.getElementById('editModal').style.display = 'none';
+    document.querySelectorAll('.modal-wrapper').forEach(element => {
+        element.style.display = 'none';
+    });
 }
 
 var deleteTarget = null;
@@ -117,6 +127,7 @@ function showActionModal(button) {
 document.getElementById('actionClose').addEventListener('click', hideAllModals);
 document.getElementById('confirmClose').addEventListener('click', hideAllModals);
 document.getElementById('editClose').addEventListener('click', hideAllModals);
+document.getElementById('newTaskClose').addEventListener('click', hideAllModals);
 
 document.getElementById('deleteBtn').addEventListener('click', function () {
     hideAllModals();
@@ -151,3 +162,54 @@ document.getElementById('editConfirmBtn').addEventListener('click', function () 
     }
     hideAllModals();
 });
+
+// Add new Task modal
+document.querySelectorAll('.new-task-button').forEach(element => {
+    element.addEventListener('click', () => {
+        handleAddNewTask(element)
+    });
+});
+
+function handleAddNewTask(element) {
+        // get container
+        const cardContainer = element.parentElement.querySelector('.kanban-card-container');
+        console.log(cardContainer);
+        console.log(element);
+        const modalWrapper = document.getElementById('newTaskModalWrapper')
+        modalWrapper.style.display = 'flex';
+        
+        // replace button w/ new one
+        const addButton = modalWrapper.querySelector('.confirm-btn');
+        const newAddButton = document.createElement('button');
+        newAddButton.classList.add('confirm-btn');
+        newAddButton.textContent = 'Create New';
+        addButton.parentElement.replaceChild(newAddButton, addButton);
+
+        // add event to new button
+        const titleInput = modalWrapper.querySelector('.new-task-title');
+        newAddButton.addEventListener('click', () => {
+            const title = titleInput.value;
+            cardContainer.insertAdjacentHTML('beforeend', renderNewTask(title));
+            hideAllModals();
+        });
+
+        titleInput.value = '';
+}
+
+function renderNewTask(title) {
+    return `
+        <div class="kanban-card card-priority-5">
+            <div class="circle-notif-container"><div class="circle circle-active"></div></div>
+            <div class="kanban-card-title">${title}</div>
+            <div class="kanban-card-progress">
+                <div class="progress-title">
+                    <span>Progress:</span>
+                    <span class="text-bold-600">0%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-line progress-0"></div>
+                </div>
+            </div>
+        </div>
+    `;
+}
