@@ -42,7 +42,7 @@ function toggleView(i, elem) {
 const addPhase = document.querySelector(".add-tab-button");
 addPhase.addEventListener('click', () => {
     const kanbanCont = document.querySelector(".kanban-container")
-    kanbanCont.insertAdjacentHTML('beforeend', renderNewPhase())
+    kanbanCont.insertAdjacentHTML('beforeend', renderNewPhase(phaseName))
     // Add click event to new phase
     const newCol = kanbanCont.lastChild;
     const moreBtn = newCol.querySelector('.col-category').querySelector('button');
@@ -60,7 +60,7 @@ addPhase.addEventListener('click', () => {
     //document.querySelector(".kanban-container").innerHTML += renderNewPhase();
 })
 
-function renderNewPhase() {
+function renderNewPhase(phaseName) {
     return `<div class="kanban-col" id="pending-col">
                 <div class="col-category">
                     <div id=${phaseName}>${phaseName}</div>
