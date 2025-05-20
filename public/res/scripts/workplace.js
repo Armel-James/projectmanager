@@ -43,13 +43,13 @@ document.getElementById('saveProjectBtn').addEventListener('click', async functi
 
 
         const dref = setDoc(doc(projectsRef), newProject, { merge: true })
-        .then(() => {
+        /*.then(() => {
           // document.getElementById("projectsContainer").replaceChildren(ProjectDisplay(user));
           // document.getElementById("projectsContainer").innerHTML = "";
           // ProjectDisplay(user);
           // location.reload();
           // renderProjectCard(newProject);
-        })
+        })*/
         .catch((error) => {
             console.error("Error writing document: ", error);// debug
           });
@@ -98,7 +98,7 @@ function renderProjectCard(projectId, project) {
             </div>
             
             <div class="d-flex align-items-end justify-content-end bg-green">
-              <a class="card-play">
+              <a class="card-play" id=${projectId}>
                 <img src="res/images/play.png">
               </a>
             </div>
@@ -149,14 +149,16 @@ async function ProjectDisplay(user, id, formattedProject) {
 
         console.log(`Project ${button.id} deleted successfully.`);// debug
 
-        div.getElementById(`${button.id}`).remove();
+        document.getElementById(button.id).remove();
       });
     });
 
     // Open proj func
     const openProj = document.querySelectorAll(".card-play")
     openProj.forEach(a => {a.addEventListener("click", function () {
-      window.location.href = "proj.html";
+      // window.location.href = "proj.html";
+      window.location.href = `proj.html?docId=${a.id}`
+      console.log(a.id)
       console.log(window.location.pathname);
       console.log("working open proj func")
     })})

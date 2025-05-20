@@ -41,12 +41,27 @@ function toggleView(i, elem) {
 // Add phase
 const addPhase = document.querySelector(".add-tab-button");
 addPhase.addEventListener('click', () => {
-    document.querySelector(".kanban-container").innerHTML += renderNewPhase();
+    showEditPhaseNameModal(document.querySelector(".add-tab-button"))
 })
-function renderNewPhase() {
+function showEditPhaseNameModal(button, label) {
+    editTarget = button;
+    positionModal(document.getElementById('editModal'), button);
+    setNameNewPhase(label)
+}
+function setNameNewPhase(phaseLabel) {
+    document.getElementById('editConfirmBtn').addEventListener('click', function () {
+        var input = document.getElementById('editInput');
+        // var phaseLabel = editTarget.parentElement.querySelector("#phaseLabel");
+            phaseLabel = input.value;
+            editTarget = null;
+    document.querySelector(".kanban-container").innerHTML += renderNewPhase(phaseLabel);
+        hideAllModals();
+    });
+}
+function renderNewPhase(phaseName) {
     return `<div class="kanban-col" id="pending-col">
                             <div class="col-category">
-                                <div id="phaseLabel">Pending</div>
+                                <div id="${phaseName}">${phaseName}</div>
                                 <button>
                                     <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
                                 </button>
@@ -67,6 +82,7 @@ const editPhase = document.querySelectorAll(".kanban-col").forEach((div) => {
         console.log(`button of ${coldiv}`)
         // btndiv
         showActionModal(btndiv)
+        editmodal(div.querySelector("div div #phaseLabel"))
     })
 })
 
@@ -91,6 +107,7 @@ function hideAllModals() {
 
 var deleteTarget = null;
 var editTarget = null;
+var editCreateTarget = null;
 
 // var triggers = document.querySelectorAll('.trigger-btn');
 // for (var i = 0; i < triggers.length; i++) {
@@ -107,6 +124,13 @@ function showActionModal(button) {
     editTarget = button;
     positionModal(document.getElementById('actionModal'), button);
 }
+// document.getElementById('editConfirmBtn').addEventListener('click', function () {
+//     var input = document.getElementById('editInput');
+//         phaseLabel.textContent = input.value;
+//         document.querySelector(".kanban-container").innerHTML += renderNewPhase(phaseLabel);
+//         editTarget = null;
+//     hideAllModals();
+// });
 
 document.getElementById('actionClose').addEventListener('click', hideAllModals);
 document.getElementById('confirmClose').addEventListener('click', hideAllModals);
@@ -136,12 +160,62 @@ document.getElementById('editBtn').addEventListener('click', function () {
     }
 });
 
+function editmodal(phaseLabel) {
 document.getElementById('editConfirmBtn').addEventListener('click', function () {
     var input = document.getElementById('editInput');
-    var phaseLabel = editTarget.parentElement.querySelector("#phaseLabel");
+    // var phaseLabel = editTarget.parentElement.querySelector("#phaseLabel");
     if (phaseLabel !== null) {
         phaseLabel.textContent = input.value;
         editTarget = null;
     }
     hideAllModals();
 });
+}
+
+// ================ Real-time ==================
+// Reference to collection
+monitorAuthState(async (user) => {
+    const colRef = collection(db, "users", user.uid, "Projects", docId, "Phases");
+    const userRef = doc(db, "users", auth.currentUser.uid);
+
+    // console.log(auth.currentUser.uid);
+    // const projectsRef = collection(userRef, "Projects", docId, "Phases");
+    // const dref = setDoc(doc(projectsRef), {}, { merge: true })
+
+    // Real-time listener using onSnapshot and .docChanges()
+    onSnapshot(colRef, (querySnapshot) => {
+        querySnapshot.docChanges().forEach((change) => {
+            const docId = change.doc.id;
+            const data = change.doc.data();
+
+            // Create a DOM element ID based on document ID (to avoid duplicates)
+            const listItemId = `doc-${docId}`;
+
+            if (change.type === "added") {
+                console.log(`ADDED: ${docId} - ${JSON.stringify(data)}`)
+            }
+
+            if (change.type === "modified") {
+                // Update the existing DOM item
+                const li = document.getElementById(docId);
+                if (li) li.textContent = `MODIFIED: ${docId} - ${JSON.stringify(data)}`;
+            }
+
+            if (change.type === "deleted") {
+                // Remove item from the DOM
+                const li = div.getElementById(docId);
+                console.log(li)
+                if (li) li.remove();
+            }
+        });
+    });
+})
+const params = new URLSearchParams(window.location.search);
+const docId = params.get("docId");
+console.log("Document ID:", docId);
+
+// =============================================
+
+import { auth, db } from "./firebase/firebase-config.js";
+import { signOutUser, monitorAuthState } from "../scripts/firebase/auth.js";
+import { doc, collection, onSnapshot, setDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
