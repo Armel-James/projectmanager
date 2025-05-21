@@ -41,7 +41,6 @@ function toggleView(i, elem) {
 // Add phase
 const addPhase = document.querySelector(".add-tab-button");
 addPhase.addEventListener('click', () => {
-
     const kanbanCont = document.querySelector(".kanban-container")
     kanbanCont.insertAdjacentHTML('beforeend', renderNewPhase())
     // Add click event to new phase
