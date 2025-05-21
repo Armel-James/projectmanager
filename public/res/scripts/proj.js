@@ -62,7 +62,7 @@ addPhase.addEventListener('click', () => {
 
 function renderNewPhase() {
     const phaseid = 1;
-    const phaseName = "Pending";
+    const phaseName = "[Main Task Label (Rename)]";
 
     return `<div class="kanban-col" id="pending-col">
                 <div class="col-category">
@@ -180,6 +180,8 @@ document.querySelectorAll('.kanban-card').forEach(element => {
     });
 })
 
+
+
 function handleAddNewTask(element) {
         // get container
         const cardContainer = element.parentElement.querySelector('.kanban-card-container');
@@ -231,6 +233,7 @@ function renderNewTask(title) {
 }
 
 function handleEditTask(card) {
+    id+=1
     document.getElementById('editTaskModalWrapper').style.display = 'flex';
 }
 
@@ -311,7 +314,35 @@ function toggleDropDown() {
         ddContent.style.display = 'flex';
 }
 
+// Modal Elements
+/*const taskName = document.getElementById('modal-task-name');
+const taskStart = document.getElementById('modal-date-start');
+const taskEnd = document.getElementById('modal-date-end');
+const taskDesc = document.getElementById('modal-task-description');
+const taskReqsContainer = document.getElementById('modal-req-container');
 
+const taskInfos = []
+const task = {
+    id:0,
+    title:"",
+    start:"",
+    end: "",
+    desc:"",
+    reqs: []
+}
+
+const kanbanCards = document.querySelectorAll('kanban-card')
+
+
+
+// Modal saving
+function LoadTask(id) {
+    
+}
+
+function handleSaveTask(id) {
+
+}*/
 
 
 
