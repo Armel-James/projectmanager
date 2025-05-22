@@ -1,9 +1,13 @@
-function renderNewTask(id, title, taskPercentage) {
+function renderNewTask(task, phaseId) {
+
+    const taskElementId = `ph-${phaseId}-task-${task.id}`;
+    const taskPercentage = task.percentage;
+    const taskTitle = task.title;
 
     return `
-        <div class="kanban-card card-priority-5" id="${id}">
+        <div class="kanban-card card-priority-5" id="${taskElementId}">
             <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-            <div class="kanban-card-title">${title}</div>
+            <div class="kanban-card-title">${taskTitle}</div>
             <div class="kanban-card-progress">
                 <div class="progress-title">
                     <span>Progress:</span>
@@ -20,7 +24,6 @@ function renderNewTask(id, title, taskPercentage) {
 function addNewMainTask(btnOfPhaseElement, taskId, progress) {
     // get container
     const element = btnOfPhaseElement
-    const progress = progress
     const cardContainer = element.parentElement.querySelector('.kanban-card-container');
     console.log(cardContainer);
     console.log(Element);
@@ -53,11 +56,3 @@ function addNewMainTask(btnOfPhaseElement, taskId, progress) {
 
 export default renderNewTask;
 
-/*
-    CLASSES to use querySelector() for data modification
-
-    - Task Title:                   kanban-card-title
-    - Percent indicator:            label-progress-percent
-    - Progress Line:                progress-line
-
-*/

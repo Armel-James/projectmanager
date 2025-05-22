@@ -29,7 +29,6 @@ function toggleView(i, elem) {
     })
 
     buttons.forEach((button) => {
-        // console.log(button);
         if (elem == button && !button.classList.contains("active-item")) {
             button.classList.add("active-item");
         } else if (elem != button && button.classList.contains("active-item")) {
@@ -38,42 +37,59 @@ function toggleView(i, elem) {
     })
 }
 
+
+
+
+import renderKanbanColumn from '../components/kanban/kanban-col.js' 
+import renderNewTask from '../components/kanban/kanban-card.js'
+import {getPhaseIndexId, getTaskId, getTaskObject} from '../scripts/utils.js'
+
+// Needed for local dynamic data
+var phaseIdIndexCounter = 0;
+const phases = [];
+
+addSampleDataToKanban();
+
 // Add phase
 const addPhase = document.querySelector(".add-tab-button");
-addPhase.addEventListener('click', () => {
+addPhase.addEventListener('click', () => handleAddNewPhase())
+
+function handleAddNewPhase(phaseTitle) {
+    // phaseTitle param is temporary 
+
+    // JSON
+    let phase = {
+        indexId: phaseIdIndexCounter,
+        phaseId: `phase-${phaseIdIndexCounter}`,
+        title: phaseTitle,
+        taskIndexCounter: 0,
+        tasks: []
+    }
+    
     const kanbanCont = document.querySelector(".kanban-container")
-    kanbanCont.insertAdjacentHTML('beforeend', renderNewPhase())
+    kanbanCont.insertAdjacentHTML('beforeend', renderKanbanColumn(phase.phaseId, phase.title))
     // Add click event to new phase
     const newCol = kanbanCont.lastChild;
     const moreBtn = newCol.querySelector('.col-category').querySelector('button');
-    const addNewTaskBtn = newCol.querySelector('.new-task-button');
-    //console.log(btn);
+    const addNewTaskBtn = document.getElementById(`btn-addtask-${phase.phaseId}`);
+
     moreBtn.addEventListener('click', () => {
         showActionModal(moreBtn)
     });
 
     addNewTaskBtn.addEventListener('click', () => {
-        handleAddNewTask(addNewTaskBtn);
-        console.log('event set to new task button');
+        handleAddNewTask(phase); 
     });
 
-    //document.querySelector(".kanban-container").innerHTML += renderNewPhase();
-})
+    phases.push(phase);
+    phaseIdIndexCounter += 1;
+}
 
-function renderNewPhase() {
-    const phaseid = 1;
-    const phaseName = "[Main Task Label (Rename)]";
-
-    return `<div class="kanban-col" id="pending-col">
-                <div class="col-category">
-                    <div id="${phaseid}">${phaseName}</div>
-                    <button>
-                        <svg class="col-more" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill="currentColor"/><circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill="currentColor"/><circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill="currentColor"/></svg>
-                    </button>
-                </div>
-                <div class="kanban-card-container"></div>
-                <button class="new-task-button">Add New Task</button>
-            </div>`;
+function addSampleDataToKanban() {
+    let phasetitles = ['Requirements', 'Planning', 'Designing', 'Implementation', 'Execution']
+    phasetitles.forEach((value) => {
+        handleAddNewPhase(value);
+    });
 }
 
 // Edit phase
@@ -84,7 +100,6 @@ const editPhase = document.querySelectorAll(".kanban-col").forEach((div) => {
     // console.log(coldiv)
     // console.log(`button of ${btndiv.parentElement.parentElement.id}`)
     div.querySelector("button").addEventListener('click', () => {
-        console.log(`button of ${coldiv}`)
         // btndiv
         showActionModal(btndiv)
     })
@@ -142,9 +157,13 @@ document.getElementById('deleteBtn').addEventListener('click', function () {
 
 document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
     if (deleteTarget !== null) {
+        const kanbanCol = deleteTarget.closest('.kanban-col');
+        const phaseIndex = phases.findIndex(phase => phase.phaseId === kanbanCol.id)
+        phases.splice(phaseIndex, 1);
         deleteTarget.parentElement.parentElement.remove();
         deleteTarget = null;
     }
+
     hideAllModals();
 });
 
@@ -159,19 +178,14 @@ document.getElementById('editBtn').addEventListener('click', function () {
 
 document.getElementById('editConfirmBtn').addEventListener('click', function () {
     var input = document.getElementById('editInput');
-    var phaseLabel = editTarget.parentElement.querySelector("#phaseLabel");
+    var phaseLabel = editTarget.parentElement.querySelector(".phase-name");
     if (phaseLabel !== null) {
-        phaseLabel.textContent = input.value;
+        const phase = phases.find(phase => phase.phaseId == editTarget.closest('.kanban-col').id);
+        phase.title = input.value
+        phaseLabel.textContent = phase.title;
         editTarget = null;
     }
     hideAllModals();
-});
-
-// Add new Task modal
-document.querySelectorAll('.new-task-button').forEach(element => {
-    element.addEventListener('click', () => {
-        handleAddNewTask(element)
-    });
 });
 
 document.querySelectorAll('.kanban-card').forEach(element => {
@@ -180,16 +194,15 @@ document.querySelectorAll('.kanban-card').forEach(element => {
     });
 })
 
-
-
-function handleAddNewTask(element) {
-        // get container
-        const cardContainer = element.parentElement.querySelector('.kanban-card-container');
-        console.log(cardContainer);
-        console.log(element);
+function handleAddNewTask(phase) {
+        // get phase element
+        const phaseElement = document.getElementById(phase.phaseId);
+        const cardContainer = phaseElement.querySelector('.kanban-card-container');
+        
         const modalWrapper = document.getElementById('newTaskModalWrapper')
         modalWrapper.style.display = 'flex';
-        modalWrapper.querySelector('.modal-columnName').textContent = cardContainer.parentElement.querySelector('#phaseLabel').textContent;
+
+        modalWrapper.querySelector('.modal-columnName').textContent = phaseElement.querySelector('.phase-name').textContent;
         
         // replace button w/ new one
         const addButton = modalWrapper.querySelector('.confirm-btn');
@@ -202,39 +215,98 @@ function handleAddNewTask(element) {
         const titleInput = modalWrapper.querySelector('.new-task-title');
         newAddButton.addEventListener('click', () => {
             const title = titleInput.value;
-            cardContainer.insertAdjacentHTML('beforeend', renderNewTask(title));
 
-            const lastChild = cardContainer.children[cardContainer.children.length - 1];
-            lastChild.addEventListener('click', () => {
-                handleEditTask(lastChild);
+            const task = {
+                id: phase.taskIndexCounter,
+                title: title,
+                assignees: [],
+                percentage: 0,
+                start: '',
+                end: '',
+                description: '',
+                requirementIndexCounter: 0,
+                requirements: []
+            }
+
+            cardContainer.insertAdjacentHTML('beforeend', renderNewTask(task, phase.indexId));
+
+            const newCard = document.getElementById(`ph-${phase.indexId}-task-${task.id}`);
+            newCard.addEventListener('click', () => {
+                handleEditTask(newCard);
             });
             hideAllModals();
+            
+            phase.tasks.push(task);
+            phase.taskIndexCounter += 1;
         });
 
         titleInput.value = '';
 }
 
-function renderNewTask(title) {
-    return `
-        <div class="kanban-card card-priority-5">
-            <div class="circle-notif-container"><div class="circle circle-active"></div></div>
-            <div class="kanban-card-title">${title}</div>
-            <div class="kanban-card-progress">
-                <div class="progress-title">
-                    <span>Progress:</span>
-                    <span class="text-bold-600">0%</span>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-line progress-0"></div>
-                </div>
-            </div>
-        </div>
-    `;
-}
 
-function handleEditTask(card) {
-    id+=1
+
+import {renderCounterListItem, renderToggleListItem} from '../components/kanban/req-item.js';
+
+function handleEditTask(currentTaskCard) {
     document.getElementById('editTaskModalWrapper').style.display = 'flex';
+    document.getElementById('modalCurrentTaskElementId').value = currentTaskCard.id;
+    document.getElementById('req-container').querySelectorAll('.req-item').forEach(element => {
+        element.remove();
+    });
+
+    const task = getTaskObject(phases, currentTaskCard.id);
+    const editTaskModal = document.getElementById('editTaskModalWrapper');
+
+    editTaskModal.querySelector('.my-modal-title-text').textContent = task.title;
+    editTaskModal.querySelector('.task-description').value = task.description;
+    editTaskModal.querySelector('.sched-start').value = task.start;
+    editTaskModal.querySelector('.sched-end').value = task.end;
+    var position = 0;
+    const requirementContainer = document.getElementById('req-container');
+
+    task.requirements.forEach(req => {
+        if (req.isCounterOrToggle == 'Toggle')
+            requirementContainer.insertAdjacentHTML('beforeend', renderToggleListItem(currentTaskCard.id, position, req));
+        else if (req.isCounterOrToggle == 'Counter'){
+            requirementContainer.insertAdjacentHTML('beforeend', renderCounterListItem(req));
+        }
+        let deletebtn = requirementContainer.lastElementChild.querySelector('.delete-btn');
+        deletebtn.addEventListener('click', () => {
+            deletebtn.closest('.req-item').remove();
+        })
+        position += 1;
+    });
+    /*
+        let requirementToggle = {
+            id:0,
+            description: '',
+            isCounterOrToggle: 'Toggle',
+            state: true
+        }
+
+        let requirementCounter = {
+            id:0,
+            description: '',
+            isCounterOrToggle: 'Counter',
+            current: 0,
+            target: 1
+        }
+    */
+    // 
+    // requirementContainer.querySelectorAll('*').forEach(req => req.remove());
+    // task.requirements.forEach(requirement => {
+    //     if (requirement.isCounterOrToggle === 'Counter'){
+
+    //         requirementContainer.insertAdjacentHTML('beforeend', renderCounterListItem());
+    //     } else if (requirement.isCounterOrToggle === 'Toggle') {
+    //         requirementContainer.insertAdjacentHTML('beforeend', renderToggleListItem(requirement));
+    //     }
+    //     else {
+    //         return;
+    //     }
+
+    //     task.requirementIndexCounter += 1;
+    // })
 }
 
 // To delete
@@ -243,68 +315,45 @@ var id = 0;
 // Requirements Dropdown
 document.getElementById('requirements-dropdown').addEventListener('click', () => toggleDropDown());
 const content = document.getElementById('myDropdownContent').querySelectorAll('.dropdown-option');
-console.log(content);
+
 document.getElementById('myDropdownContent').querySelectorAll('.dropdown-option').forEach(element => {
     element.addEventListener('click', () => {
         toggleDropDown();
-
+        const currentTaskCardId = document.getElementById('modalCurrentTaskElementId').value;
         const reqContainer = document.getElementById('req-container');
+        let reqCount = reqContainer.childElementCount;
+        /*
+            let requirementToggle = {
+                id:0,
+                description: '',
+                isCounterOrToggle: 'Toggle',
+                state: true
+            }
+
+            let requirementCounter = {
+                id:0,
+                description: '',
+                isCounterOrToggle: 'Counter',
+                current: 0,
+                target: 1
+            }
+        */
 
         if (element.textContent === 'Counter'){
-            // Render counter item
-            reqContainer.insertAdjacentHTML('beforeend', renderCounterListItem(id));
+            reqContainer.insertAdjacentHTML('beforeend', renderCounterListItem());
         }
         else if (element.textContent === 'Toggle'){
-            reqContainer.insertAdjacentHTML('beforeend', renderToggleListItem(id));
+            reqContainer.insertAdjacentHTML('beforeend', renderToggleListItem(currentTaskCardId, reqCount));
         }
+        const deleteBtn = reqContainer.lastElementChild.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', () => {
+            deleteBtn.closest('.req-item').remove();
+        });
+
+        reqCount += 1;
         id += 1;
     })
 });
-
-function renderToggleListItem(requirementName) {
-
-    return `
-        <div class="req-toggle-type">
-            <div class="req-desc">
-                <input type="text" class="req-desc-input" placeholder="Type here"/>
-            </div>
-            
-            <div class="req-options-container">
-                <div class="checkbox-wrapper-10">
-                    <input class="tgl tgl-flip" id="${requirementName}" type="checkbox" unchecked />
-                    <label class="tgl-btn" data-tg-off="To do" data-tg-on="Done" for="${requirementName}"></label>
-                </div>
-                <button class="delete-btn">
-                    <svg viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 21.32L21 3.32001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3 3.32001L21 21.32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    `;
-}
-
-function renderCounterListItem(requirementName) {
-    return `
-        <div class="req-count-type" id="${requirementName}">
-            <div class="req-desc">
-                <input type="text" class="req-desc-input" placeholder="Type here"/>
-            </div>
-            
-            <div class="req-options-container">
-                <input type="number" placeholder="Target"/>
-                <input type="number" placeholder="Current"/>
-                <button class="delete-btn">
-                    <svg viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 21.32L21 3.32001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3 3.32001L21 21.32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    `;
-}
 
 function toggleDropDown() {
     const ddContent = document.getElementById('myDropdownContent');
@@ -314,38 +363,49 @@ function toggleDropDown() {
         ddContent.style.display = 'flex';
 }
 
-// Modal Elements
-/*const taskName = document.getElementById('modal-task-name');
-const taskStart = document.getElementById('modal-date-start');
-const taskEnd = document.getElementById('modal-date-end');
-const taskDesc = document.getElementById('modal-task-description');
-const taskReqsContainer = document.getElementById('modal-req-container');
 
-const taskInfos = []
-const task = {
-    id:0,
-    title:"",
-    start:"",
-    end: "",
-    desc:"",
-    reqs: []
+const editModal = document.getElementById('editTaskModalWrapper');
+document.getElementById('editTaskSave').addEventListener('click', () => handleSaveTask());
+
+function handleSaveTask() {
+    const taskCardId = document.getElementById('modalCurrentTaskElementId').value;
+     
+    const taskObj = getTaskObject(phases, taskCardId);
+    taskObj.description = editModal.querySelector('.task-description').value;
+    taskObj.start = editModal.querySelector('.sched-start').value;
+    taskObj.end =editModal.querySelector('.sched-end').value;
+
+    let reqs = []
+
+    document.getElementById('req-container').querySelectorAll('.req-item').forEach(reqElem => {
+         
+        if (reqElem.classList.contains('req-toggle-type')) {
+            
+            let reqToggleItem = {
+                description: reqElem.querySelector('.req-desc-input').value,
+                isCounterOrToggle: 'Toggle',
+                state: reqElem.querySelector('.checkbox-complete-state').checked
+            }
+            reqs.push(reqToggleItem);
+        } else if (reqElem.classList.contains('req-count-type')) {
+            
+            let reqCountItem = {
+                description: reqElem.querySelector('.req-desc-input').value,
+                isCounterOrToggle: 'Counter',
+                current: reqElem.querySelector('.input-current').value,
+                target: reqElem.querySelector('.input-target').value
+            }
+            reqs.push(reqCountItem);
+        }
+        
+    });
+
+    taskObj.requirements = reqs;
+
+    console.log(taskObj);
+
+    hideAllModals();
 }
-
-const kanbanCards = document.querySelectorAll('kanban-card')
-
-
-
-// Modal saving
-function LoadTask(id) {
-    
-}
-
-function handleSaveTask(id) {
-
-}*/
-
-
-
 
 
 
@@ -395,7 +455,7 @@ monitorAuthState(async (user) => {
             if (change.type === "deleted") {
                 // Remove item from the DOM
                 const li = div.getElementById(docId);
-                console.log(li)
+                //console.log(li)
                 if (li) li.remove();
             }
         });
@@ -403,7 +463,7 @@ monitorAuthState(async (user) => {
 })
 const params = new URLSearchParams(window.location.search);
 const docId = params.get("docId");
-console.log("Document ID:", docId);
+//console.log("Document ID:", docId);
 
 // =============================================
 
