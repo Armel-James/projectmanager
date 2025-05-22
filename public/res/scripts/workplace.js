@@ -199,6 +199,7 @@ onSnapshot(colRef, (querySnapshot) => {
       // Remove item from the DOM
       const li = div.getElementById(docId);
       console.log(li)
+      console.log(`DELETED: ${docId} - ${JSON.stringify(data)}`)
       if (li) li.remove();
     }
   });
