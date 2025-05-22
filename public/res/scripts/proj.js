@@ -452,11 +452,12 @@ monitorAuthState(async (user) => {
                 if (li) li.textContent = `MODIFIED: ${docId} - ${JSON.stringify(data)}`;
             }
 
-            if (change.type === "deleted") {
+            if (change.type === "removed") {
                 // Remove item from the DOM
-                const li = div.getElementById(docId);
-                //console.log(li)
-                if (li) li.remove();
+                // const li = div.getElementById(docId);
+                // console.log(li)
+                console.log(`DELETED: ${docId} - ${JSON.stringify(data)}`)
+                // if (li) li.remove();
             }
         });
     });
