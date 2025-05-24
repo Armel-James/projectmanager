@@ -55,6 +55,7 @@ const addPhase = document.querySelector(".add-tab-button");
 addPhase.addEventListener('click', () => handleAddNewPhase())
 
 function handleAddNewPhase(phaseTitle) {
+    // const colRef = collection(db, "users", auth.currentUser.uid, "Projects", docId, "Phases");
     // phaseTitle param is temporary 
 
     // JSON
@@ -215,8 +216,8 @@ function handleAddNewTask(phase) {
         const titleInput = modalWrapper.querySelector('.new-task-title');
         newAddButton.addEventListener('click', () => {
             const title = titleInput.value;
-
             const task = {
+                phase: phase.indexId,
                 id: phase.taskIndexCounter,
                 title: title,
                 assignees: [],
@@ -376,6 +377,8 @@ function handleSaveTask() {
     taskObj.end =editModal.querySelector('.sched-end').value;
 
     let reqs = []
+    let allTasks = 0;
+    let doneTasks = 0;
 
     document.getElementById('req-container').querySelectorAll('.req-item').forEach(reqElem => {
          
@@ -387,6 +390,8 @@ function handleSaveTask() {
                 state: reqElem.querySelector('.checkbox-complete-state').checked
             }
             reqs.push(reqToggleItem);
+            allTasks += 1;
+            if(reqToggleItem.state==true) doneTasks+=1
         } else if (reqElem.classList.contains('req-count-type')) {
             
             let reqCountItem = {
@@ -396,19 +401,70 @@ function handleSaveTask() {
                 target: reqElem.querySelector('.input-target').value
             }
             reqs.push(reqCountItem);
+            allTasks += Number(reqCountItem.target);
+            doneTasks += Number(reqCountItem.current)
         }
-        
     });
-
     taskObj.requirements = reqs;
 
+
+    let percentage = (100 / allTasks) * doneTasks
+    taskObj.percentage = Math.ceil(percentage)
+
+    // console.log(document.getElementById(`ph-${taskObj.phase}-task-${taskObj.id}`).querySelector("#label-progress-percent").textContent)
+    document.getElementById(`ph-${taskObj.phase}-task-${taskObj.id}`).querySelector(".label-progress-percent").textContent = `${taskObj.percentage}%`
+    document.getElementById(`ph-${taskObj.phase}-task-${taskObj.id}`).querySelector(".progress-line").setAttribute("style", `width: ${taskObj.percentage}%`)
+
+    console.log(allTasks)
+    console.log(doneTasks)
     console.log(taskObj);
 
     hideAllModals();
 }
 
+document.getElementById('add-row-member').addEventListener('click', addRow);
+function addRow() {
+            // Get input values
+            const id = document.getElementById("id").value;
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const role = document.getElementById("role").value;
+            const status = document.getElementById("status").value;
 
+            // Check if all fields are filled
+            if (!id || !name || !email || !role || !status) {
+                alert("Please fill in all fields!");
+                return;
+            }
 
+            // Create new row
+            const table = document.getElementById("detailsTable").getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            // Insert new cells and data
+            newRow.insertCell(0).textContent = id;
+            newRow.insertCell(1).textContent = name;
+            newRow.insertCell(2).textContent = email;
+            newRow.insertCell(3).textContent = role;
+            newRow.insertCell(4).textContent = status;
+
+            // Add Delete button
+            const deleteCell = newRow.insertCell(5);
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.className = "btn btn-danger btn-sm";
+            deleteButton.onclick = function() {
+                table.deleteRow(newRow.rowIndex - 1); // Remove the row
+            };
+            deleteCell.appendChild(deleteButton);
+
+            // Clear input fields after adding row
+            document.getElementById("id").value = "";
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("role").value = "";
+            document.getElementById("status").value = "";
+        }
 
 
 
@@ -426,8 +482,10 @@ function handleSaveTask() {
 // ================ Real-time ==================
 // Reference to collection
 monitorAuthState(async (user) => {
-    const colRef = collection(db, "users", user.uid, "Projects", docId, "Phases");
     const userRef = doc(db, "users", auth.currentUser.uid);
+
+    const colRef = collection(db, "users", user.uid, "Projects", docId, "Phases");
+    // console.log(JSON.stringify(getDocs(colRef)))
 
     // console.log(auth.currentUser.uid);
     // const projectsRef = collection(userRef, "Projects", docId, "Phases");
@@ -436,14 +494,14 @@ monitorAuthState(async (user) => {
     // Real-time listener using onSnapshot and .docChanges()
     onSnapshot(colRef, (querySnapshot) => {
         querySnapshot.docChanges().forEach((change) => {
-            const docId = change.doc.id;
+            const docId1 = change.doc.id;
             const data = change.doc.data();
 
             // Create a DOM element ID based on document ID (to avoid duplicates)
             const listItemId = `doc-${docId}`;
 
             if (change.type === "added") {
-                console.log(`ADDED: ${docId} - ${JSON.stringify(data)}`)
+                console.log(`ADDED: ${docId1} - ${JSON.stringify(data)}`)
             }
 
             if (change.type === "modified") {

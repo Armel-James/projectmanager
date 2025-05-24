@@ -107,13 +107,13 @@ function renderProjectCard(projectId, project) {
 }
 
 // Project view
-monitorAuthState(async (user) => {
+/*monitorAuthState(async (user) => {
   if (user) {
     // ProjectDisplay(user);
   } else {
     console.log("User is not signed in.");// debug
   }
-});
+});*/
 
 // Proj display func
 async function ProjectDisplay(user, id, formattedProject) {

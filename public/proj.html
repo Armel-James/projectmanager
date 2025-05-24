@@ -48,28 +48,6 @@
                                     <li><a class="dropdown-item" href="#"></a></li>
                                 </ul>
                             </li>
-            
-                            <!-- <li class="nav-item dropdown d-flex justify-content-end align-items-center w-75 ">
-                                <a class="nav-link d-flex justify-content-end align-items-center profile-dropdown " href="#"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img id="profile-pic" class="img-fluid img-thumbnail rounded-circle icon" alt="profile picture">
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end" style="position: absolute;">
-                                    <li class="m-3 d-flex justify-content-center align-items-center flex-column">
-                                        <img id="profile-pic-big" class="img-fluid img-thumbnail w-50"
-                                            alt="profile picture">
-                                        <h6 id="user-name"></h6>
-                                        <p id="user-email" class="text-sm"></p>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li><a class="dropdown-item" href="#">Projects</a></li>
-                                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" id="sign-out-btn">Sign Out</a></li>
-                                </ul>
-                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -88,32 +66,8 @@
                     </button>
                 </div> 
                 <ul class="side-navigation-btn-list">
-                    <li>
-                        <button id="details-tab-toggler" class="active-item">
-                            <img src="/res/images/details.png" alt="Project Details image"/>
-                            <span>Project Details</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="details-tab-toggler">
-                            <img alt="people.png" src="/res/images/people.png"/>
-                            <span>Members</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="details-tab-toggler">
-                            <img src="/res/images/monitor.png"/>
-                            <span>Monitor</span>
-                        </button>
-                        
-                    </li>
+                    
                     <li>Views</li>
-                    <li>
-                        <button id="details-tab-toggler">
-                            <img src="/res/images/phase.png"/>
-                            <span>Phase</span>
-                        </button>
-                    </li>
                     <li>
                         <button id="details-tab-toggler">
                             <img src="/res/images/task.png"/>
@@ -122,8 +76,8 @@
                     </li>
                     <li>
                         <button id="details-tab-toggler">
-                            <img src="/res/images/Calendar.png"/>
-                            <span>Calendar</span>
+                            <img alt="people.png" src="/res/images/people.png"/>
+                            <span>Members</span>
                         </button>
                     </li>
                 </ul>
@@ -132,18 +86,7 @@
             <!-- Main contents -->
             <main>
                 <h3 class="clr-primary">Project Name</h3>
-                <div id="project-details-view" class="content">
-                    project-details-view
-                </div>
-                <div id="members-view" class="content d-none">
-                    members-view
-                </div>
-                <div id="monitor-view" class="content d-none">
-                    monitor-view
-                </div>
-                <div id="phase-view" class="content d-none">
-                    phase-view
-                </div>
+                
 
                 <!-- Task Management -->
                 <div id="task-management-view" class="content d-none">
@@ -199,26 +142,57 @@
                             <svg class="plus-vector" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g data-name="add" id="add-2"><g><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19" y2="5"/><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12"/></g></g></g></svg>
                             <span>New Column</span>
                         </button>
-                        <!-- <div class="dynamic-tab-container">
-                            <button class="dynamic-tab-button dynamic-tab-active">Logistics</button>
-                            <button class="dynamic-tab-button">Finance</button>
-                            <button class="dynamic-tab-button">Marketing</button>
-                            <button class="dynamic-tab-button">Law</button>
-                            <button class="dynamic-tab-button">Health</button>
-                            <button class="dynamic-tab-button">Operations</button>
-                            <button class="dynamic-tab-button">Recruitment</button>
-                            <button class="dynamic-tab-button">Lorem</button>
-                            <button class="dynamic-tab-button">Ipsum</button>
-                        </div> -->
-
                     </div>
                     <div class="kanban-container overflow-y-auto d-flex  ">
                         
 
                     </div>
                 </div>
-                <div id="calendar-view" class="content d-none">
-                    calendar-view
+                <!-- Members View -->
+                <div id="members-view" class="content d-none">
+                    <div class="mb-4">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="number" id="id" class="form-control" placeholder="ID" required>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" id="name" class="form-control" placeholder="Name" required>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="email" id="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" id="role" class="form-control" placeholder="Role" required>
+                            </div>
+                            <div class="col-md-2">
+                                <select id="status" class="form-select" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary w-100" id="add-row-member" onclick="addRow()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive rounded">
+                        <table class="table table-bordered table-striped" id="detailsTable">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Rows will be added dynamically here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </main>
             
@@ -342,6 +316,7 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="/res/scripts/proj.js" type="module"></script>
     </body>
 </html>
